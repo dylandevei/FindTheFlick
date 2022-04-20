@@ -1,20 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+  <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,300&family=Oswald&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <header>
+    <div class="nav-container container">
+      <div class="row">
+        <div class="column-half nav-text">
+          <p>FindTheFlick</p>
+        </div>
+        <div class="column-half nav-icons">
+          <a><i class="fas fa-home" id="home"></i></a>
+          <a><i class="fas fa-archive hidden" id="archive"></i></a>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="splash-container container">
+      <div class="view" data-view="splash-image">
+        <div class="splash-image">
+          <img src="images/FindTheFlickq111w1w.png" alt="splash image" id="splash">
+        </div>
+        <div class="splash-text">
+          <h1>FindTheFlick</h1>
+        </div>
+        <div class="splash-blurb">
+          <p>Can't find something to watch?</p>
+          <p>I'm here to help...</p>
+          <p><button class="get-started-btn">Get Started</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="container view hidden" data-view="home-page">
+      <div class="view hidden" data-view="watchlist">
+        <h1 class="oswald text-align watchlist-header">Your Watchlist:</h1>
+        <ul class="ul">
+
+        </ul>
+        <p class="noto text-align watchlist-text">Your watchlist is empty...</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="view hidden" data-view="home-page">
+        <div class="row">
+          <div class="column-full home-page-btns">
+            <button class="tv-btn">tv show</button>
+            <button class="movie-btn">movie</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="homepage-movies">
+            <!-- append here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container view hidden" data-view="random-pick">
+      <div class="row">
+        <div class="generated-random-pick">
+          <div class="column-full tv-pick">
+            <div class="tv-information">
+              <a><i class="fas fa-times"></i></a>
+              <a><i></i></a>
+              <h1 class="tv-title"></h1>
+              <img src="" alt="placeholder image" class="tv-poster">
+              <h3 class="tv-starring"></h3>
+              <p class="tv-plot"></p>
+            </div>
+            <div class="pick-icons">
+              <a><i class="fas fa-plus-circle hidden"></i></a>
+              <a><i class="fas fa-redo hidden"></i></a>
+              <a><i class="fas fa-trash hidden"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container view hidden" data-view="random-movie">
+      <div class="row">
+        <div class="generated-movie-pick">
+          <div class="column-full movie-pick">
+            <div class="movie-information">
+              <a><i></i></a>
+              <h1 class="movie-title"></h1>
+              <img src="" alt="placeholder image" class="movie-poster">
+              <h3 class="movie-starring"></h3>
+              <p class="movie-plot"></p>
+            </div>
+            <div class="pick-icons">
+              <a><i class="fas fa-plus-circle hidden"></i></a>
+              <a><i class="fas fa-redo"></i></a>
+              <a><i class="fas fa-trash hidden"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
+
+
+<!--
+    <i class="fas fa-redo"></i>
+    <i class="fas fa-plus"></i>
+    <i class="fas fa-trash"></i>
+-->
