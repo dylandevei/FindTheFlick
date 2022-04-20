@@ -4,11 +4,7 @@ var $movieButton = document.querySelector('.movie-btn');
 var $homepage = document.querySelector('.homepage-movies');
 var $view = document.querySelectorAll('.view');
 var $home = document.querySelector('#home');
-var $generatedTV = document.querySelector('.generated-tv-pick');
-
-$home.addEventListener('click', function (event) {
-  switchViews('splash-image');
-});
+var $exit = document.querySelector('.fa-times');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
@@ -82,50 +78,21 @@ function getInformation(item) {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
-    var $columnFull = document.createElement('div');
-    $columnFull.className = 'column-full tv-pick';
-    var $tvInfo = document.createElement('div');
-    $tvInfo.className = 'tv-information';
-    $columnFull.appendChild($tvInfo);
-    var $a = document.createElement('a');
-    var $times = document.createElement('i');
-    $times.className = 'fas fa-times';
-    $a.appendChild($times);
-    $tvInfo.appendChild($a);
-    var $h1 = document.createElement('h1');
-    $h1.className = 'tv-title';
-    var $span = document.createElement('span');
-    $span.textContent = xhr.response.title;
-    $h1.appendChild($span);
-    $tvInfo.appendChild($h1);
-    var $img = document.createElement('img');
-    $img.className = 'tv-poster';
-    $img.setAttribute('src', xhr.response.image);
-    $tvInfo.appendChild($img);
-    var $h3 = document.createElement('h3');
-    $h3.className = 'tv-starring';
-    $h3.textContent = 'Starring:' + ' ' + xhr.response.stars;
-    $tvInfo.appendChild($h3);
-    var $p = document.createElement('p');
-    $p.className = 'tv-plot';
-    $p.textContent = xhr.response.plot;
-    $tvInfo.appendChild($p);
-    var $pickIcons = document.createElement('div');
-    $pickIcons.className = 'pick-icons';
-    var $a2 = document.createElement('a');
-    var $i2 = document.createElement('i');
-    $i2.className = 'fas fa-plus-circle hidden';
-    $a2.appendChild($i2);
-    var $a3 = document.createElement('a');
-    var $i3 = document.createElement('i');
-    $i3.className = 'fas fa-redo';
-    $a3.appendChild($i3);
-    var $a4 = document.createElement('a');
-    var $i4 = document.createElement('i');
-    $i4.className = 'fas fa-trash hidden';
-    $a4.appendChild($i4);
-    $pickIcons.append($a2, $a3, $a4);
-    $columnFull.appendChild($pickIcons);
-    $generatedTV.appendChild($columnFull);
+    var $tvTitle = document.querySelector('.tv-title');
+    $tvTitle.textContent = xhr.response.title;
+    var $tvPoster = document.querySelector('.tv-poster');
+    $tvPoster.setAttribute('src', xhr.response.image);
+    var $starring = document.querySelector('.tv-starring');
+    $starring.textContent = 'Starring:' + ' ' + xhr.response.stars;
+    var $tvPlot = document.querySelector('.tv-plot');
+    $tvPlot.textContent = xhr.response.plot;
   });
 }
+
+$exit.addEventListener('click', function (event) {
+  switchViews('home-page');
+});
+
+$home.addEventListener('click', function (event) {
+  switchViews('home-page');
+});
