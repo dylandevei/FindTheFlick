@@ -1,0 +1,213 @@
+body {
+  background-color: #dbedf3;
+}
+
+header {
+  width: 100%;
+  background-color: #404b69;
+}
+
+.nav-container {
+  background-color: #404b69;
+}
+
+i {
+  color: white;
+}
+
+.nav-text {
+  color: white;
+  font-family: Oswald, sans-serif;
+  font-size: 40px;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fa-home {
+  font-size: 40px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.fa-archive {
+  font-size: 40px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+#splash {
+  margin-top: -100px;
+  width: 700px;
+  height: 700px;
+  color: black;
+  padding: 0;
+}
+
+.splash-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -180px;
+}
+
+.splash-text {
+  display: flex;
+  justify-content: center;
+  font-family: Oswald, sans-serif;
+  font-size: 50px;
+  margin-bottom: -50px;
+}
+
+.splash-blurb {
+  text-align: center;
+  line-height: 2px;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.get-started-btn {
+  margin-top: 20px;
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  padding: 10px 40px;
+  font-size: 40px;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+.tv-btn {
+  margin-top: 20px;
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  padding: 1% 50px;
+  font-size: 40px;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+.movie-btn {
+  margin-top: 20px;
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  padding: 1% 10%;
+  font-size: 40px;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+.oswald {
+  font-family: Oswald, sans-serif;
+}
+
+.noto {
+  font-family: Noto, sans-serif;
+}
+
+.text-align {
+  text-align: center;
+}
+
+.watchlist-header {
+  font-size: 70px;
+}
+
+.watchlist-text {
+  font-size: 20px;
+}
+
+.justify-content-center {
+  display: flex;
+  align-items: center;
+}
+
+.home-page-btns {
+  text-align: center;
+  padding: 5px 20px;
+}
+
+.movie-posters {
+  padding: 10px 5px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.homepage-movies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tv-pick {
+  padding: 25px 50px;
+  background-color: #404b69;
+  height: 1200px;
+  width: 100%;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-right: auto;
+  position: relative;
+  border-radius: 15px;
+}
+
+.tv-title {
+  text-align: center;
+  font-family: Oswald, sans-serif;
+  color: white;
+  padding-top: 0;
+  font-size: 40px;
+}
+
+.tv-starring {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Noto Sans", sans-serif;
+  color: white;
+}
+
+.tv-plot {
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  color: white;
+  padding-top: 0;
+  font-size: 16px;
+  position: relative;
+}
+
+.redo-icon {
+  position: absolute;
+  left: 45%;
+}
+
+.fa-times {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 30px;
+}
+
+.pick-icons {
+  padding-top: 40px;
+  font-size: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tv-poster {
+  padding: 0 5px;
+  height: 700px;
+  width: 100%;
+  object-fit: contain;
+}
+
+#home:hover {
+  color: green;
+}
