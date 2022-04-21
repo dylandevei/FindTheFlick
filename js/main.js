@@ -4,6 +4,8 @@ var $movieButton = document.querySelector('.movie-btn');
 var $homepage = document.querySelector('.homepage-movies');
 var $view = document.querySelectorAll('.view');
 var $home = document.querySelector('#home');
+var $homebtn = document.querySelector('.fa-home');
+var $archivebtn = document.querySelector('.fa-archive');
 var $exit = document.querySelector('.fa-times');
 var $archive = document.querySelector('#archive');
 var $add = document.querySelector('.fa-plus-circle');
@@ -12,15 +14,34 @@ var $overlay = document.querySelector('.overlay');
 var $tvTitle = document.querySelector('.tv-title');
 var $tvPoster = document.querySelector('.tv-poster');
 var $starring = document.querySelector('.tv-starring');
+var $movieID = document.querySelector('.tv-id');
 var $tvPlot = document.querySelector('.tv-plot');
-// var $ul = document.querySelector('ul');
+var $watchlistText = document.querySelector('.watchlist-text');
+var $homepageMovies = document.querySelector('.homepage-movies');
+var $entryMovies = document.querySelector('.entry-movies');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
 $movieButton.addEventListener('click', getRandomTopMovie);
 
+function renderEntry(entry) {
+  var url = entry.imageUrl;
+  var movieId = entry.movieId;
+
+  var $div = document.createElement('div');
+  $div.className = 'column-half justify-content-center';
+  var $img = document.createElement('img');
+  $img.setAttribute('src', url);
+  $img.className = 'movie-posters';
+  $img.setAttribute('id', movieId);
+  $div.appendChild($img);
+  return $div;
+}
+
 function renderHomePage() {
   switchViews('home-page');
+  $homebtn.className = 'fas fa-home';
+  $archivebtn.className = 'fas fa-archive';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
@@ -35,12 +56,15 @@ function renderHomePage() {
       $id.textContent = xhr.response.items[i].id;
       $id.className = 'hidden';
       $id.setAttribute('id', 'idText');
+      $img.setAttribute('id', $id.textContent);
       $columnHalf.appendChild($img);
       $columnHalf.appendChild($id);
       $homepage.appendChild($columnHalf);
+
     }
   });
   xhr.send();
+
 }
 
 function handleClick(event) {
@@ -78,6 +102,7 @@ function getRandomTopMovie() {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
+
     var randomIndex = Math.floor(Math.random() * xhr.response.items.length);
     var item = xhr.response.items[randomIndex].id;
     getInformation(item);
@@ -94,8 +119,9 @@ function getInformation(item) {
   xhr.addEventListener('load', function () {
     $tvTitle.textContent = xhr.response.title;
     $tvPoster.setAttribute('src', xhr.response.image);
-    $starring.textContent = 'Starring:' + ' ' + xhr.response.stars;
+    $starring.textContent = xhr.response.stars;
     $tvPlot.textContent = xhr.response.plot;
+    $movieID.textContent = xhr.response.id;
   });
 }
 
@@ -107,22 +133,25 @@ $add.addEventListener('click', function (event) {
     imageUrl: $tvPoster.src,
     actors: $starring.textContent,
     plot: $tvPlot.textContent,
+    movieId: $movieID.textContent,
     entryId: data.nextEntryId
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
+  $entryMovies.prepend(renderEntry(entry));
   data.editing = null;
-
+  switchViews('entries');
 });
 
 $exit.addEventListener('click', function (event) {
-  switchViews('home-page');
+  switchViews('entries');
   closePopUp();
 
 });
 
 $home.addEventListener('click', function (event) {
   switchViews('home-page');
+  $add.className = 'fas fa-plus-circle';
 });
 
 function overlay(event) {
@@ -137,4 +166,33 @@ function closePopUp(event) {
 
 $archive.addEventListener('click', function () {
   switchViews('entries');
+});
+
+window.addEventListener('DOMContentLoaded', domContentLoaded);
+
+function emptyEntries() {
+  if (data.entries.length === 0) {
+    $watchlistText.setAttribute('class', 'noto text-align watchlist-text');
+  } else {
+    $watchlistText.setAttribute('class', 'hidden');
+  }
+}
+
+function domContentLoaded(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var newEntry = renderEntry(data.entries[i]);
+    $entryMovies.appendChild(newEntry);
+  }
+  emptyEntries();
+}
+
+$homepageMovies.addEventListener('click', function (event) {
+  var homepageID = event.target.getAttribute('id');
+  getInformation(homepageID);
+});
+
+$entryMovies.addEventListener('click', function (event) {
+  var entryId = event.target.getAttribute('id');
+  getInformation(entryId);
+  $add.className = 'hidden';
 });
