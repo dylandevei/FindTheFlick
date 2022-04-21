@@ -5,6 +5,15 @@ var $homepage = document.querySelector('.homepage-movies');
 var $view = document.querySelectorAll('.view');
 var $home = document.querySelector('#home');
 var $exit = document.querySelector('.fa-times');
+var $archive = document.querySelector('#archive');
+var $add = document.querySelector('.fa-plus-circle');
+var $popUp = document.querySelector('.popup');
+var $overlay = document.querySelector('.overlay');
+var $tvTitle = document.querySelector('.tv-title');
+var $tvPoster = document.querySelector('.tv-poster');
+var $starring = document.querySelector('.tv-starring');
+var $tvPlot = document.querySelector('.tv-plot');
+// var $ul = document.querySelector('ul');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
@@ -22,7 +31,12 @@ function renderHomePage() {
       var $img = document.createElement('img');
       $img.setAttribute('src', xhr.response.items[i].image);
       $img.className = 'movie-posters';
+      var $id = document.createElement('p');
+      $id.textContent = xhr.response.items[i].id;
+      $id.className = 'hidden';
+      $id.setAttribute('id', 'idText');
       $columnHalf.appendChild($img);
+      $columnHalf.appendChild($id);
       $homepage.appendChild($columnHalf);
     }
   });
@@ -78,21 +92,49 @@ function getInformation(item) {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
-    var $tvTitle = document.querySelector('.tv-title');
     $tvTitle.textContent = xhr.response.title;
-    var $tvPoster = document.querySelector('.tv-poster');
     $tvPoster.setAttribute('src', xhr.response.image);
-    var $starring = document.querySelector('.tv-starring');
     $starring.textContent = 'Starring:' + ' ' + xhr.response.stars;
-    var $tvPlot = document.querySelector('.tv-plot');
     $tvPlot.textContent = xhr.response.plot;
   });
 }
 
+$add.addEventListener('click', function (event) {
+  overlay();
+  var entry = null;
+  entry = {
+    title: $tvTitle.textContent,
+    imageUrl: $tvPoster.src,
+    actors: $starring.textContent,
+    plot: $tvPlot.textContent,
+    entryId: data.nextEntryId
+  };
+  data.nextEntryId++;
+  data.entries.unshift(entry);
+  data.editing = null;
+
+});
+
 $exit.addEventListener('click', function (event) {
   switchViews('home-page');
+  closePopUp();
+
 });
 
 $home.addEventListener('click', function (event) {
   switchViews('home-page');
+});
+
+function overlay(event) {
+  $overlay.className = 'overlay-on';
+  $popUp.className = 'popup-display';
+}
+
+function closePopUp(event) {
+  $overlay.className = 'overlay';
+  $popUp.className = 'popup';
+}
+
+$archive.addEventListener('click', function () {
+  switchViews('entries');
 });
