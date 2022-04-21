@@ -14,13 +14,29 @@ var $overlay = document.querySelector('.overlay');
 var $tvTitle = document.querySelector('.tv-title');
 var $tvPoster = document.querySelector('.tv-poster');
 var $starring = document.querySelector('.tv-starring');
+var $movieID = document.querySelector('.tv-id');
 var $tvPlot = document.querySelector('.tv-plot');
-var $ul = document.querySelector('ul');
 var $watchlistText = document.querySelector('.watchlist-text');
+var $homepageMovies = document.querySelector('.homepage-movies');
+var $entryMovies = document.querySelector('.entry-movies');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
 $movieButton.addEventListener('click', getRandomTopMovie);
+
+function renderEntry(entry) {
+  var url = entry.imageUrl;
+  var movieId = entry.movieId;
+
+  var $div = document.createElement('div');
+  $div.className = 'column-half justify-content-center';
+  var $img = document.createElement('img');
+  $img.setAttribute('src', url);
+  $img.className = 'movie-posters';
+  $img.setAttribute('id', movieId);
+  $div.appendChild($img);
+  return $div;
+}
 
 function renderHomePage() {
   switchViews('home-page');
@@ -40,12 +56,15 @@ function renderHomePage() {
       $id.textContent = xhr.response.items[i].id;
       $id.className = 'hidden';
       $id.setAttribute('id', 'idText');
+      $img.setAttribute('id', $id.textContent);
       $columnHalf.appendChild($img);
       $columnHalf.appendChild($id);
       $homepage.appendChild($columnHalf);
+
     }
   });
   xhr.send();
+
 }
 
 function handleClick(event) {
@@ -83,6 +102,7 @@ function getRandomTopMovie() {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
+
     var randomIndex = Math.floor(Math.random() * xhr.response.items.length);
     var item = xhr.response.items[randomIndex].id;
     getInformation(item);
@@ -99,8 +119,9 @@ function getInformation(item) {
   xhr.addEventListener('load', function () {
     $tvTitle.textContent = xhr.response.title;
     $tvPoster.setAttribute('src', xhr.response.image);
-    $starring.textContent = 'Starring:' + ' ' + xhr.response.stars;
+    $starring.textContent = xhr.response.stars;
     $tvPlot.textContent = xhr.response.plot;
+    $movieID.textContent = xhr.response.id;
   });
 }
 
@@ -112,12 +133,14 @@ $add.addEventListener('click', function (event) {
     imageUrl: $tvPoster.src,
     actors: $starring.textContent,
     plot: $tvPlot.textContent,
+    movieId: $movieID.textContent,
     entryId: data.nextEntryId
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
-  $ul.prepend(renderEntry(entry));
+  $entryMovies.prepend(renderEntry(entry));
   data.editing = null;
+  switchViews('entries');
 });
 
 $exit.addEventListener('click', function (event) {
@@ -128,6 +151,7 @@ $exit.addEventListener('click', function (event) {
 
 $home.addEventListener('click', function (event) {
   switchViews('home-page');
+  $add.className = 'fas fa-plus-circle';
 });
 
 function overlay(event) {
@@ -157,62 +181,18 @@ function emptyEntries() {
 function domContentLoaded(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var newEntry = renderEntry(data.entries[i]);
-    $ul.appendChild(newEntry);
+    $entryMovies.appendChild(newEntry);
   }
   emptyEntries();
 }
 
-function renderEntry(entry) {
-  var title = entry.title;
-  var url = entry.imageUrl;
-  var actors = entry.actors;
-  var plot = entry.plot;
+$homepageMovies.addEventListener('click', function (event) {
+  var homepageID = event.target.getAttribute('id');
+  getInformation(homepageID);
+});
 
-  var $li = document.createElement('li');
-  var $generatedPick = document.createElement('div');
-  var $columnFull = document.createElement('div');
-  var $tvInformation = document.createElement('div');
-  var $h1 = document.createElement('h1');
-  var $tvPoster = document.createElement('img');
-  var $h3 = document.createElement('h3');
-  var $plot = document.createElement('p');
-  var $pickIcons = document.createElement('div');
-  var $a = document.createElement('a');
-  var $plusCircle = document.createElement('i');
-  var $a2 = document.createElement('a');
-  var $trashIcon = document.createElement('i');
-
-  $li.className = 'row';
-  $generatedPick.className = 'generated-random-pick';
-  $columnFull.className = 'column-full tv-pick';
-  $tvInformation.className = 'tv-information';
-  $h1.className = 'tv-title';
-  $h1.textContent = title;
-  $tvPoster.className = 'tv-poster';
-  $tvPoster.setAttribute('src', url);
-  $h3.text = actors;
-  $h3.className = 'tv-starring';
-  $plot.className = 'tv-plot';
-  $plot.textContent = plot;
-  $pickIcons.className = 'pick-icons';
-  $plusCircle.className = 'fas fa-plus-circle hidden';
-  $trashIcon.className = 'fas fa-trash hidden';
-
-  $a.appendChild($plusCircle);
-  $a2.appendChild($trashIcon);
-
-  $li.appendChild($generatedPick);
-  $generatedPick.appendChild($columnFull);
-  $columnFull.appendChild($tvInformation);
-  $tvInformation.append($h1, $tvPoster, $h3, $plot);
-  $columnFull.appendChild($pickIcons);
-  $pickIcons.append($a, $plusCircle);
-  $pickIcons.append($a2, $trashIcon);
-
-  return $li;
-}
-
-// for (var i = 0; i < data.entries.length; i++) {
-//   var object = renderEntry(data.entries[i]);
-//   $ul.appendChild(object);
-// }
+$entryMovies.addEventListener('click', function (event) {
+  var entryId = event.target.getAttribute('id');
+  getInformation(entryId);
+  $add.className = 'hidden';
+});
