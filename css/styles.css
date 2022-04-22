@@ -244,6 +244,14 @@ i {
   font-size: 30px;
 }
 
+.fa-times-delete {
+  position: absolute;
+  color: black;
+  bottom: 130px;
+  right: 2px;
+  font-size: 30px;
+}
+
 #home:hover {
   color: #f7385a;
 }
@@ -327,7 +335,6 @@ i {
   border-radius: 5px;
   z-index: 1;
   width: 600px;
-  height: 250px;
 }
 
 .popup-header {

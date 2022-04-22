@@ -2,8 +2,10 @@ var $getStarted = document.querySelector('.get-started-btn');
 var $tvButton = document.querySelector('.tv-btn');
 var $movieButton = document.querySelector('.movie-btn');
 var $theaterButton = document.querySelector('.theater-btn');
+var $confirmButton = document.querySelector('.confirm-button');
 var $homepage = document.querySelector('.homepage-movies');
 var $theaterpage = document.querySelector('.theater-movies');
+var $entryMovies = document.querySelector('.entry-movies');
 var $view = document.querySelectorAll('.view');
 var $home = document.querySelector('#home');
 var $homebtn = document.querySelector('.fa-home');
@@ -12,7 +14,9 @@ var $exit = document.querySelector('.fa-times');
 var $archive = document.querySelector('#archive');
 var $add = document.querySelector('.fa-plus-circle');
 var $delete = document.querySelector('.fa-trash');
+var $deleteX = document.querySelector('#delete');
 var $popUp = document.querySelector('.popup');
+var $deletePopUp = document.querySelector('.delete-popup');
 var $overlay = document.querySelector('.overlay');
 var $tvTitle = document.querySelector('.tv-title');
 var $tvPoster = document.querySelector('.tv-poster');
@@ -20,9 +24,6 @@ var $starring = document.querySelector('.tv-starring');
 var $movieID = document.querySelector('.tv-id');
 var $tvPlot = document.querySelector('.tv-plot');
 var $watchlistText = document.querySelector('.watchlist-text');
-var $entryMovies = document.querySelector('.entry-movies');
-var $popupHeader = document.querySelector('.popup-header > h2');
-var $confirmButton = document.querySelector('.confirm-button');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
@@ -158,7 +159,7 @@ function getInformation(item) {
 }
 
 $add.addEventListener('click', function (event) {
-  overlay();
+  openPopup();
   event.preventDefault();
   var entry = null;
   entry = {
@@ -178,12 +179,15 @@ $add.addEventListener('click', function (event) {
 });
 
 $delete.addEventListener('click', function (event) {
-  deletePopUp();
+  openDeletePopup();
 });
 
 $exit.addEventListener('click', function (event) {
   switchViews('entries');
   closePopUp();
+});
+$deleteX.addEventListener('click', function (event) {
+  CloseDelete();
 });
 
 $home.addEventListener('click', function (event) {
@@ -195,7 +199,7 @@ $theaterButton.addEventListener('click', function () {
   switchViews('theaters-page');
 });
 
-function overlay(event) {
+function openPopup(event) {
   $overlay.className = 'overlay-on';
   $popUp.className = 'popup-display';
 }
@@ -205,10 +209,14 @@ function closePopUp(event) {
   $popUp.className = 'popup';
 }
 
-function deletePopUp(event) {
-  $popupHeader.textContent = 'Are You Sure you Want to Delete This Selection?';
-  $confirmButton.className = 'confirm-button';
-  overlay();
+function openDeletePopup(event) {
+  $overlay.className = 'overlay-on';
+  $deletePopUp.className = 'delete-popup-display';
+}
+
+function CloseDelete(event) {
+  $overlay.className = 'overlay';
+  $deletePopUp.className = 'delete-popup';
 }
 
 $archive.addEventListener('click', function () {
@@ -262,6 +270,7 @@ $entryMovies.addEventListener('click', editClick);
 $confirmButton.addEventListener('click', deleteEntry);
 
 function deleteEntry(event) {
+  $deletePopUp.className = 'hidden';
   for (var i = 0; i < data.entries.length; i++) {
     if (data.editing === data.entries[i].entryId) {
       data.entries.splice(i, 1);
@@ -269,9 +278,9 @@ function deleteEntry(event) {
   }
   var $div = document.querySelectorAll('div');
   for (var j = 0; j < $div.length; j++) {
-    var parseAttribute = parseInt($div[i].getAttribute('data-entry-id'));
+    var parseAttribute = parseInt($div[j].getAttribute('data-entry-id'));
     if (data.editing === parseAttribute) {
-      $div[i].remove();
+      $div[j].remove();
     }
   }
 
