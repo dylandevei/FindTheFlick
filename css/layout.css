@@ -23,6 +23,10 @@
   width: 25%;
 }
 
+.column-third {
+  width: calc(100% / 3);
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
