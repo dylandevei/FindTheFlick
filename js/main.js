@@ -1,7 +1,9 @@
 var $getStarted = document.querySelector('.get-started-btn');
 var $tvButton = document.querySelector('.tv-btn');
 var $movieButton = document.querySelector('.movie-btn');
+var $theaterButton = document.querySelector('.theater-btn');
 var $homepage = document.querySelector('.homepage-movies');
+var $theaterpage = document.querySelector('.theater-movies');
 var $view = document.querySelectorAll('.view');
 var $home = document.querySelector('#home');
 var $homebtn = document.querySelector('.fa-home');
@@ -71,6 +73,7 @@ function handleClick(event) {
   var viewName = event.target.getAttribute('data-view');
   switchViews(viewName);
   renderHomePage();
+  getTheaters();
 }
 
 function switchViews(viewName) {
@@ -108,6 +111,31 @@ function getRandomTopMovie() {
     getInformation(item);
   }
   );
+}
+
+function getTheaters() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_93i87hmc');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    for (var i = 0; i < xhr.response.items.length; i++) {
+      var $columnHalf = document.createElement('div');
+      $columnHalf.className = 'column-third justify-content-center';
+      var $img = document.createElement('img');
+      $img.setAttribute('src', xhr.response.items[i].image);
+      $img.className = 'movie-posters';
+      var $id = document.createElement('p');
+      $id.textContent = xhr.response.items[i].id;
+      $id.className = 'hidden';
+      $id.setAttribute('id', 'idText');
+      $img.setAttribute('id', $id.textContent);
+      $columnHalf.appendChild($img);
+      $columnHalf.appendChild($id);
+      $theaterpage.appendChild($columnHalf);
+    }
+  });
+  xhr.send();
+
 }
 
 function getInformation(item) {
@@ -154,6 +182,10 @@ $home.addEventListener('click', function (event) {
   $add.className = 'fas fa-plus-circle';
 });
 
+$theaterButton.addEventListener('click', function () {
+  switchViews('theaters-page');
+});
+
 function overlay(event) {
   $overlay.className = 'overlay-on';
   $popUp.className = 'popup-display';
@@ -195,4 +227,9 @@ $entryMovies.addEventListener('click', function (event) {
   var entryId = event.target.getAttribute('id');
   getInformation(entryId);
   $add.className = 'hidden';
+});
+
+$theaterpage.addEventListener('click', function (event) {
+  var theaterID = event.target.getAttribute('id');
+  getInformation(theaterID);
 });

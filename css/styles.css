@@ -104,6 +104,18 @@ i {
   text-transform: uppercase;
 }
 
+.theater-btn {
+  margin-top: 20px;
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  padding: 1% 10%;
+  font-size: 40px;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
 .oswald {
   font-family: Oswald, sans-serif;
 }
@@ -148,6 +160,11 @@ i {
 }
 
 .entry-movies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.theater-movies {
   display: flex;
   flex-wrap: wrap;
 }
