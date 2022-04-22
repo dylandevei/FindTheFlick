@@ -11,6 +11,7 @@ var $archivebtn = document.querySelector('.fa-archive');
 var $exit = document.querySelector('.fa-times');
 var $archive = document.querySelector('#archive');
 var $add = document.querySelector('.fa-plus-circle');
+var $delete = document.querySelector('.fa-trash');
 var $popUp = document.querySelector('.popup');
 var $overlay = document.querySelector('.overlay');
 var $tvTitle = document.querySelector('.tv-title');
@@ -19,8 +20,9 @@ var $starring = document.querySelector('.tv-starring');
 var $movieID = document.querySelector('.tv-id');
 var $tvPlot = document.querySelector('.tv-plot');
 var $watchlistText = document.querySelector('.watchlist-text');
-var $homepageMovies = document.querySelector('.homepage-movies');
 var $entryMovies = document.querySelector('.entry-movies');
+var $popupHeader = document.querySelector('.popup-header > h2');
+var $confirmButton = document.querySelector('.confirm-button');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
@@ -31,6 +33,7 @@ function renderEntry(entry) {
   var movieId = entry.movieId;
 
   var $div = document.createElement('div');
+  $div.setAttribute('data-entry-id', entry.entryId);
   $div.className = 'column-half justify-content-center';
   var $img = document.createElement('img');
   $img.setAttribute('src', url);
@@ -139,6 +142,7 @@ function getTheaters() {
 }
 
 function getInformation(item) {
+  $delete.className = 'hidden';
   switchViews('random-pick');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
@@ -155,6 +159,7 @@ function getInformation(item) {
 
 $add.addEventListener('click', function (event) {
   overlay();
+  event.preventDefault();
   var entry = null;
   entry = {
     title: $tvTitle.textContent,
@@ -169,12 +174,16 @@ $add.addEventListener('click', function (event) {
   $entryMovies.prepend(renderEntry(entry));
   data.editing = null;
   switchViews('entries');
+  $watchlistText.className = 'hidden';
+});
+
+$delete.addEventListener('click', function (event) {
+  deletePopUp();
 });
 
 $exit.addEventListener('click', function (event) {
   switchViews('entries');
   closePopUp();
-
 });
 
 $home.addEventListener('click', function (event) {
@@ -194,6 +203,12 @@ function overlay(event) {
 function closePopUp(event) {
   $overlay.className = 'overlay';
   $popUp.className = 'popup';
+}
+
+function deletePopUp(event) {
+  $popupHeader.textContent = 'Are You Sure you Want to Delete This Selection?';
+  $confirmButton.className = 'confirm-button';
+  overlay();
 }
 
 $archive.addEventListener('click', function () {
@@ -218,7 +233,7 @@ function domContentLoaded(event) {
   emptyEntries();
 }
 
-$homepageMovies.addEventListener('click', function (event) {
+$homepage.addEventListener('click', function (event) {
   var homepageID = event.target.getAttribute('id');
   getInformation(homepageID);
 });
@@ -227,9 +242,42 @@ $entryMovies.addEventListener('click', function (event) {
   var entryId = event.target.getAttribute('id');
   getInformation(entryId);
   $add.className = 'hidden';
+  $delete.className = 'fas fa-trash';
 });
 
 $theaterpage.addEventListener('click', function (event) {
   var theaterID = event.target.getAttribute('id');
   getInformation(theaterID);
 });
+
+function editClick(event) {
+  if (event.target.tagName === 'IMG') {
+    var closestDiv = event.target.closest('div');
+    var dataID = closestDiv.getAttribute('data-entry-id');
+    data.editing = parseInt(dataID);
+  }
+}
+
+$entryMovies.addEventListener('click', editClick);
+$confirmButton.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  var $div = document.querySelectorAll('div');
+  for (var j = 0; j < $div.length; j++) {
+    var parseAttribute = parseInt($div[i].getAttribute('data-entry-id'));
+    if (data.editing === parseAttribute) {
+      $div[i].remove();
+    }
+  }
+
+  switchViews('entries');
+  emptyEntries();
+  $overlay.className = 'overlay';
+  $popUp.className = 'popup';
+  data.editing = null;
+}
