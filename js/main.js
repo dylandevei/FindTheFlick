@@ -2,8 +2,10 @@ var $getStarted = document.querySelector('.get-started-btn');
 var $tvButton = document.querySelector('.tv-btn');
 var $movieButton = document.querySelector('.movie-btn');
 var $theaterButton = document.querySelector('.theater-btn');
+var $confirmButton = document.querySelector('.confirm-button');
 var $homepage = document.querySelector('.homepage-movies');
 var $theaterpage = document.querySelector('.theater-movies');
+var $entryMovies = document.querySelector('.entry-movies');
 var $view = document.querySelectorAll('.view');
 var $home = document.querySelector('#home');
 var $homebtn = document.querySelector('.fa-home');
@@ -11,7 +13,10 @@ var $archivebtn = document.querySelector('.fa-archive');
 var $exit = document.querySelector('.fa-times');
 var $archive = document.querySelector('#archive');
 var $add = document.querySelector('.fa-plus-circle');
+var $delete = document.querySelector('.fa-trash');
+var $deleteX = document.querySelector('#delete');
 var $popUp = document.querySelector('.popup');
+var $deletePopUp = document.querySelector('.delete-popup');
 var $overlay = document.querySelector('.overlay');
 var $tvTitle = document.querySelector('.tv-title');
 var $tvPoster = document.querySelector('.tv-poster');
@@ -19,8 +24,6 @@ var $starring = document.querySelector('.tv-starring');
 var $movieID = document.querySelector('.tv-id');
 var $tvPlot = document.querySelector('.tv-plot');
 var $watchlistText = document.querySelector('.watchlist-text');
-var $homepageMovies = document.querySelector('.homepage-movies');
-var $entryMovies = document.querySelector('.entry-movies');
 
 $getStarted.addEventListener('click', handleClick);
 $tvButton.addEventListener('click', getRandomTopTv);
@@ -31,6 +34,7 @@ function renderEntry(entry) {
   var movieId = entry.movieId;
 
   var $div = document.createElement('div');
+  $div.setAttribute('data-entry-id', entry.entryId);
   $div.className = 'column-half justify-content-center';
   var $img = document.createElement('img');
   $img.setAttribute('src', url);
@@ -139,6 +143,7 @@ function getTheaters() {
 }
 
 function getInformation(item) {
+  $delete.className = 'hidden';
   switchViews('random-pick');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
@@ -154,7 +159,8 @@ function getInformation(item) {
 }
 
 $add.addEventListener('click', function (event) {
-  overlay();
+  openPopup();
+  event.preventDefault();
   var entry = null;
   entry = {
     title: $tvTitle.textContent,
@@ -169,12 +175,19 @@ $add.addEventListener('click', function (event) {
   $entryMovies.prepend(renderEntry(entry));
   data.editing = null;
   switchViews('entries');
+  $watchlistText.className = 'hidden';
+});
+
+$delete.addEventListener('click', function (event) {
+  openDeletePopup();
 });
 
 $exit.addEventListener('click', function (event) {
   switchViews('entries');
   closePopUp();
-
+});
+$deleteX.addEventListener('click', function (event) {
+  closeDelete();
 });
 
 $home.addEventListener('click', function (event) {
@@ -186,7 +199,7 @@ $theaterButton.addEventListener('click', function () {
   switchViews('theaters-page');
 });
 
-function overlay(event) {
+function openPopup(event) {
   $overlay.className = 'overlay-on';
   $popUp.className = 'popup-display';
 }
@@ -194,6 +207,16 @@ function overlay(event) {
 function closePopUp(event) {
   $overlay.className = 'overlay';
   $popUp.className = 'popup';
+}
+
+function openDeletePopup(event) {
+  $overlay.className = 'overlay-on';
+  $deletePopUp.className = 'delete-popup-display';
+}
+
+function closeDelete(event) {
+  $overlay.className = 'overlay';
+  $deletePopUp.className = 'delete-popup';
 }
 
 $archive.addEventListener('click', function () {
@@ -218,7 +241,7 @@ function domContentLoaded(event) {
   emptyEntries();
 }
 
-$homepageMovies.addEventListener('click', function (event) {
+$homepage.addEventListener('click', function (event) {
   var homepageID = event.target.getAttribute('id');
   getInformation(homepageID);
 });
@@ -227,9 +250,43 @@ $entryMovies.addEventListener('click', function (event) {
   var entryId = event.target.getAttribute('id');
   getInformation(entryId);
   $add.className = 'hidden';
+  $delete.className = 'fas fa-trash';
 });
 
 $theaterpage.addEventListener('click', function (event) {
   var theaterID = event.target.getAttribute('id');
   getInformation(theaterID);
 });
+
+function editClick(event) {
+  if (event.target.tagName === 'IMG') {
+    var closestDiv = event.target.closest('div');
+    var dataID = closestDiv.getAttribute('data-entry-id');
+    data.editing = parseInt(dataID);
+  }
+}
+
+$entryMovies.addEventListener('click', editClick);
+$confirmButton.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+  $deletePopUp.className = 'hidden';
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  var $div = document.querySelectorAll('div');
+  for (var j = 0; j < $div.length; j++) {
+    var parseAttribute = parseInt($div[j].getAttribute('data-entry-id'));
+    if (data.editing === parseAttribute) {
+      $div[j].remove();
+    }
+  }
+
+  switchViews('entries');
+  emptyEntries();
+  $overlay.className = 'overlay';
+  $popUp.className = 'popup';
+  data.editing = null;
+}

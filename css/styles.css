@@ -218,6 +218,11 @@ i {
   right: 45%;
 }
 
+.fa-trash {
+  position: absolute;
+  right: 47%;
+}
+
 .pick-icons {
   font-size: 40px;
   display: flex;
@@ -239,6 +244,14 @@ i {
   font-size: 30px;
 }
 
+.fa-times-delete {
+  position: absolute;
+  color: black;
+  bottom: 130px;
+  right: 2px;
+  font-size: 30px;
+}
+
 #home:hover {
   color: #f7385a;
 }
@@ -253,6 +266,10 @@ i {
 
 .fa-plus-circle:hover {
   color: rgb(0, 212, 0);
+}
+
+.fa-trash:hover {
+  color: #f7385a;
 }
 
 .overlay {
@@ -284,6 +301,30 @@ i {
   width: 400px;
 }
 
+.delete-popup {
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 15px;
+  width: 400px;
+}
+
+.delete-popup-display {
+  position: fixed;
+  padding: 25px 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  z-index: 1;
+  width: 600px;
+  height: 250px;
+}
+
 .popup-display {
   position: fixed;
   padding: 25px 0;
@@ -294,10 +335,35 @@ i {
   border-radius: 5px;
   z-index: 1;
   width: 600px;
-  height: 200px;
 }
 
 .popup-header {
+  position: relative;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-family: Oswald, sans-serif;
+  font-size: 20px;
+}
+
+.popup-body {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-button {
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  padding: 10px 40px;
+  font-size: 20px;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+.delete-popup-header {
   position: relative;
   padding: 20px 10px;
   display: flex;
