@@ -187,7 +187,7 @@ $exit.addEventListener('click', function (event) {
   closePopUp();
 });
 $deleteX.addEventListener('click', function (event) {
-  CloseDelete();
+  closeDelete();
 });
 
 $home.addEventListener('click', function (event) {
@@ -214,7 +214,7 @@ function openDeletePopup(event) {
   $deletePopUp.className = 'delete-popup-display';
 }
 
-function CloseDelete(event) {
+function closeDelete(event) {
   $overlay.className = 'overlay';
   $deletePopUp.className = 'delete-popup';
 }
