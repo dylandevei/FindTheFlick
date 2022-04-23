@@ -11,14 +11,11 @@ header {
   background-color: #404b69;
 }
 
-i {
-  color: white;
-}
-
 .nav-text {
   color: white;
   font-family: Oswald, sans-serif;
-  font-size: 40px;
+  padding-top: 20px;
+  font-size: 30px;
 }
 
 .nav-icons {
@@ -26,30 +23,24 @@ i {
   justify-content: flex-end;
 }
 
+.fa-archive,
 .fa-home {
   font-size: 40px;
   padding: 20px;
   margin-top: 30px;
 }
 
-.fa-archive {
-  font-size: 40px;
-  padding: 20px;
-  margin-top: 30px;
-}
-
 #splash {
-  margin-top: -100px;
-  width: 700px;
-  height: 700px;
+  width: 500px;
+  height: 500px;
   color: black;
   padding: 0;
 }
 
 .splash-image {
+  margin-top: -50px;
   display: flex;
   justify-content: center;
-  margin-bottom: -180px;
 }
 
 .splash-text {
@@ -57,7 +48,8 @@ i {
   justify-content: center;
   font-family: Oswald, sans-serif;
   font-size: 50px;
-  margin-bottom: -50px;
+  margin-top: -160px;
+  margin-bottom: -70px;
 }
 
 .splash-blurb {
@@ -65,7 +57,7 @@ i {
   line-height: 2px;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .get-started-btn {
@@ -80,48 +72,20 @@ i {
   text-transform: uppercase;
 }
 
-.tv-btn {
+.tv-btn,
+.movie-btn,
+.theater-btn,
+.confirm-btn {
   margin-top: 20px;
+  margin-bottom: 10px;
   background-color: #f73859;
   color: #fff;
   border-radius: 15px;
   border: none;
-  padding: 1% 50px;
-  font-size: 40px;
+  padding: 1% 30px;
+  font-size: 18px;
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
-}
-
-.movie-btn {
-  margin-top: 20px;
-  background-color: #f73859;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-  padding: 1% 10%;
-  font-size: 40px;
-  font-family: Oswald, sans-serif;
-  text-transform: uppercase;
-}
-
-.theater-btn {
-  margin-top: 20px;
-  background-color: #f73859;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-  padding: 1% 10%;
-  font-size: 40px;
-  font-family: Oswald, sans-serif;
-  text-transform: uppercase;
-}
-
-.oswald {
-  font-family: Oswald, sans-serif;
-}
-
-.noto {
-  font-family: Noto, sans-serif;
 }
 
 .text-align {
@@ -129,12 +93,17 @@ i {
 }
 
 .watchlist-header {
-  font-size: 70px;
+  margin: auto;
+  font-size: 3em;
   text-align: center;
+  font-family: Oswald, sans-serif;
+  letter-spacing: 10px;
+  text-transform: uppercase;
 }
 
 .watchlist-text {
   font-size: 20px;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .justify-content-center {
@@ -148,29 +117,26 @@ i {
 }
 
 .movie-posters {
-  padding: 10px 5px;
+  padding: 5px;
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.homepage-movies {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.entry-movies {
-  display: flex;
-  flex-wrap: wrap;
-}
-
+.homepage-movies,
+.entry-movies,
 .theater-movies {
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
 }
 
-.tv-information {
-  position: relative;
+.container-box {
+  margin-top: 10px;
+  background-color: #404b69;
+  border-radius: 15px;
+  color: white;
+  border: 10px double white;
 }
 
 .generated-random-pick {
@@ -178,72 +144,65 @@ i {
   margin-right: auto;
 }
 
-.tv-pick {
+.result-pick {
   padding: 10px;
   background-color: #404b69;
-  height: 120vh;
+  height: 95vh;
   width: 550px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 15px;
+  border: 10px double white;
 }
 
-.tv-title {
+.result-information {
+  position: relative;
+}
+
+.result-title {
   text-align: center;
   font-family: Oswald, sans-serif;
   color: white;
-  font-size: 35px;
+  font-size: 30px;
 }
 
-.tv-starring {
+.result-poster {
+  height: 50vh;
+  width: 100%;
+  object-fit: contain;
+}
+
+.result-starring {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   margin: 5px;
   font-family: "Noto Sans", sans-serif;
   color: white;
 }
 
-.tv-plot {
+.result-plot {
   text-align: center;
   font-family: "Noto Sans", sans-serif;
   color: white;
-  padding-top: 0;
-  padding-bottom: 5%;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.2;
   position: relative;
 }
 
-.fa-plus-circle {
-  position: absolute;
-  right: 45%;
-}
-
+.fa-plus-circle,
 .fa-trash {
   position: absolute;
   right: 47%;
 }
 
 .pick-icons {
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   justify-content: space-around;
   position: relative;
 }
 
-.tv-poster {
-  height: 50vh;
-  width: 100%;
-  object-fit: contain;
-}
-
-.fa-times {
-  position: absolute;
-  color: black;
-  bottom: 130px;
-  right: 2px;
-  font-size: 30px;
-}
-
+.fa-times,
 .fa-times-delete {
   position: absolute;
   color: black;
@@ -252,24 +211,42 @@ i {
   font-size: 30px;
 }
 
-#home:hover {
-  color: #f7385a;
+.fa-trash {
+  color: #f73859;
+  opacity: 80%;
 }
 
-.fa-times:hover {
-  color: #f7385a;
+.fa-trash:hover {
+  color: #f73859;
+  opacity: 100%;
 }
 
+.fa-times:hover,
+.fa-trash:hover, {
+  color: #f7385a;
+  opacity: 100%;
+}
+
+#home,
+.fa-archive {
+  color: white;
+  opacity: 70%;
+}
+
+#home:hover,
 .fa-archive:hover {
-  color: #f7385a;
+  color: white;
+  opacity: 100%;
+}
+
+.fa-plus-circle {
+  color: rgb(0, 212, 0);
+  opacity: 70%;
 }
 
 .fa-plus-circle:hover {
   color: rgb(0, 212, 0);
-}
-
-.fa-trash:hover {
-  color: #f7385a;
+  opacity: 100%;
 }
 
 .overlay {
@@ -290,28 +267,12 @@ i {
   background-color: rgb(0 0 0  / 80%);
 }
 
-.popup {
-  position: fixed;
-  display: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 15px;
-  width: 400px;
-}
-
+.popup,
 .delete-popup {
-  position: fixed;
   display: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 15px;
-  width: 400px;
 }
 
+.popup-display,
 .delete-popup-display {
   position: fixed;
   padding: 25px 0;
@@ -319,25 +280,14 @@ i {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  border-radius: 5px;
+  border-radius: 15px;
   z-index: 1;
   width: 600px;
-  height: 250px;
+  border: 10px double #f7385a;
 }
 
-.popup-display {
-  position: fixed;
-  padding: 25px 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 5px;
-  z-index: 1;
-  width: 600px;
-}
-
-.popup-header {
+.popup-header,
+.delete-popup-header {
   position: relative;
   padding: 20px 10px;
   display: flex;
@@ -350,25 +300,4 @@ i {
 .popup-body {
   display: flex;
   justify-content: center;
-}
-
-.confirm-button {
-  background-color: #f73859;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-  padding: 10px 40px;
-  font-size: 20px;
-  font-family: Oswald, sans-serif;
-  text-transform: uppercase;
-}
-
-.delete-popup-header {
-  position: relative;
-  padding: 20px 10px;
-  display: flex;
-  justify-content: center;
-  font-weight: 400;
-  font-family: Oswald, sans-serif;
-  font-size: 20px;
 }
