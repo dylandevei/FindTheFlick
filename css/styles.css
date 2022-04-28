@@ -149,9 +149,9 @@ header {
   padding: 0.5rem;
   background-color: #404b69;
   height: 100vh;
-  width: 30rem;
-  margin: 2rem;
+  width: 90%;
   border-radius: 15px;
+  margin: auto;
   border: 10px double white;
 }
 
@@ -282,7 +282,7 @@ header {
   background-color: white;
   border-radius: 15px;
   z-index: 1;
-  width: 30rem;
+  width: 23rem;
   border: 10px double #f7385a;
 }
 
