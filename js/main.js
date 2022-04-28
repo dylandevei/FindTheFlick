@@ -48,7 +48,7 @@ function renderEntry(entry) {
 
   var $div = document.createElement('div');
   $div.setAttribute('data-entry-id', entry.entryId);
-  $div.className = 'column-third justify-content-center';
+  $div.className = 'column-full justify-content-center';
   var $img = document.createElement('img');
   $img.setAttribute('src', url);
   $img.className = 'movie-posters';
