@@ -14,8 +14,7 @@ header {
 .nav-text {
   color: white;
   font-family: Oswald, sans-serif;
-  padding-top: 20px;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 .nav-icons {
@@ -25,20 +24,20 @@ header {
 
 .fa-archive,
 .fa-home {
-  font-size: 40px;
-  padding: 20px;
-  margin-top: 30px;
+  font-size: 2.4rem;
+  padding: 1rem;
+  margin-top: 1.2rem;
 }
 
 #splash {
-  width: 500px;
-  height: 500px;
+  width: 30rem;
+  height: 30rem;
   color: black;
   padding: 0;
 }
 
 .splash-image {
-  margin-top: -50px;
+  margin-top: -5rem;
   display: flex;
   justify-content: center;
 }
@@ -47,27 +46,28 @@ header {
   display: flex;
   justify-content: center;
   font-family: Oswald, sans-serif;
-  font-size: 50px;
-  margin-top: -160px;
-  margin-bottom: -70px;
+  font-size: 1.8rem;
+  margin-top: -10rem;
+  margin-bottom: -5rem;
+  padding-top: 1rem;
 }
 
 .splash-blurb {
+  padding-top: 1rem;
   text-align: center;
-  line-height: 2px;
+  line-height: 0.2rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 1.4rem;
 }
 
 .get-started-btn {
-  margin-top: 20px;
   background-color: #f73859;
   color: #fff;
-  border-radius: 15px;
+  border-radius: 1rem;
   border: none;
-  padding: 10px 40px;
-  font-size: 40px;
+  padding: 1rem 2rem;
+  font-size: 2rem;
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
 }
@@ -76,14 +76,14 @@ header {
 .movie-btn,
 .theater-btn,
 .confirm-btn {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 1.4rem;
+  margin-bottom: 0.8rem;
   background-color: #f73859;
   color: #fff;
-  border-radius: 15px;
+  border-radius: 1.2rem;
   border: none;
-  padding: 1% 30px;
-  font-size: 18px;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
 }
@@ -93,16 +93,15 @@ header {
 }
 
 .watchlist-header {
-  margin: auto;
-  font-size: 3em;
-  text-align: center;
+  margin: 0 auto;
+  font-size: 3rem;
   font-family: Oswald, sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 0.7rem;
   text-transform: uppercase;
 }
 
 .watchlist-text {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -113,11 +112,10 @@ header {
 
 .home-page-btns {
   text-align: center;
-  padding: 5px 20px;
 }
 
 .movie-posters {
-  padding: 5px;
+  padding: 0.4rem 0;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -132,11 +130,11 @@ header {
 }
 
 .container-box {
-  margin-top: 10px;
+  margin-top: 1rem;
   background-color: #404b69;
-  border-radius: 15px;
+  border-radius: 1rem;
   color: white;
-  border: 10px double white;
+  border: 0.75rem double white;
 }
 
 .generated-random-pick {
@@ -145,14 +143,13 @@ header {
 }
 
 .result-pick {
-  padding: 10px;
+  padding: 0.5rem;
   background-color: #404b69;
-  height: 95vh;
-  width: 550px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 15px;
-  border: 10px double white;
+  height: 110vh;
+  width: 45vh;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  border: 0.75rem double white;
 }
 
 .result-information {
@@ -175,7 +172,6 @@ header {
 .result-starring {
   text-align: center;
   font-size: 1.2rem;
-  margin: 5px;
   font-family: "Noto Sans", sans-serif;
   color: white;
 }
@@ -184,7 +180,7 @@ header {
   text-align: center;
   font-family: "Noto Sans", sans-serif;
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.2;
   position: relative;
 }
@@ -275,21 +271,21 @@ header {
 .popup-display,
 .delete-popup-display {
   position: fixed;
-  padding: 25px 0;
+  padding: 1.5rem 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  border-radius: 15px;
+  border-radius: 1rem;
   z-index: 1;
-  width: 30rem;
+  width: 22rem;
   border: 10px double #f7385a;
 }
 
 .popup-header,
 .delete-popup-header {
   position: relative;
-  padding: 20px 10px;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: center;
   font-family: Oswald, sans-serif;
@@ -299,4 +295,108 @@ header {
 .popup-body {
   display: flex;
   justify-content: center;
+}
+
+button,
+i.edit-icon,
+i.delete-icon {
+  cursor: pointer;
+}
+
+.lds-spinner {
+  color: official;
+  position: fixed;
+  padding: 25px 0;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+}
+
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+
+.lds-spinner div::after {
+  content: " ";
+  display: hidden;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: #fff;
+}
+
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
