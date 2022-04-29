@@ -24,6 +24,7 @@ var $resultStarring = document.querySelector('.result-starring');
 var $resultID = document.querySelector('.result-id');
 var $resultPlot = document.querySelector('.result-plot');
 var $watchlistText = document.querySelector('.watchlist-text');
+var $loading = document.querySelector('.lds-spinner');
 
 function handleClick(event) {
   var viewName = event.target.getAttribute('data-view');
@@ -113,7 +114,7 @@ function renderHomePage() {
   xhr.addEventListener('load', function () {
     for (var i = 0; i < xhr.response.items.length; i++) {
       var $columnHalf = document.createElement('div');
-      $columnHalf.className = 'column-third justify-content-center';
+      $columnHalf.className = 'column-half justify-content-center';
       var $img = document.createElement('img');
       $img.setAttribute('src', xhr.response.items[i].image);
       $img.className = 'movie-posters';
@@ -129,7 +130,6 @@ function renderHomePage() {
     }
   });
   xhr.send();
-
 }
 
 function getRandomTopTv() {
