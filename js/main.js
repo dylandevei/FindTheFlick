@@ -52,25 +52,31 @@ function renderEntry(entry) {
   $div.className = 'column-full justify-content-center';
   var $img = document.createElement('img');
   $img.setAttribute('src', url);
+  $loading.className = 'hidden';
   $img.className = 'movie-posters';
   $img.setAttribute('id', movieId);
   $div.appendChild($img);
   return $div;
+
 }
 
 function getInformation(item) {
+
   $delete.className = 'hidden';
   switchViews('random-pick');
+  $loading.className = 'lds-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
+
     $resultTitle.textContent = xhr.response.title;
     $resultPoster.setAttribute('src', xhr.response.image);
     $resultStarring.textContent = xhr.response.stars;
     $resultPlot.textContent = xhr.response.plot;
     $resultID.textContent = xhr.response.id;
+    $loading.className = 'lds-spinner hidden';
   });
 }
 
@@ -108,11 +114,13 @@ function renderHomePage() {
   switchViews('home-page');
   $homebtn.className = 'fas fa-home';
   $archivebtn.className = 'fas fa-archive';
+  $loading.className = 'lds-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (var i = 0; i < xhr.response.items.length; i++) {
+      $loading.className = 'lds-spinner hidden';
       var $columnHalf = document.createElement('div');
       $columnHalf.className = 'column-half justify-content-center';
       var $img = document.createElement('img');
@@ -126,10 +134,10 @@ function renderHomePage() {
       $columnHalf.appendChild($img);
       $columnHalf.appendChild($id);
       $homepage.appendChild($columnHalf);
-
     }
   });
   xhr.send();
+
 }
 
 function getRandomTopTv() {
@@ -160,10 +168,13 @@ function getRandomTopMovie() {
 }
 
 function getTheaters() {
+  $loading.className = 'lds-spinner';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_93i87hmc');
   xhr.responseType = 'json';
+  xhr.send();
   xhr.addEventListener('load', function () {
+    $loading.className = 'lds-spinner hidden';
     for (var i = 0; i < xhr.response.items.length; i++) {
       var $columnHalf = document.createElement('div');
       $columnHalf.className = 'column-third justify-content-center';
@@ -180,7 +191,6 @@ function getTheaters() {
       $theaterpage.appendChild($columnHalf);
     }
   });
-  xhr.send();
 
 }
 
@@ -266,10 +276,12 @@ $deleteX.addEventListener('click', function (event) {
 $home.addEventListener('click', function (event) {
   switchViews('home-page');
   $add.className = 'fas fa-plus-circle';
+  $loading.className = 'hidden';
 });
 
 $theaterButton.addEventListener('click', function () {
   switchViews('theaters-page');
+  $loading.className = 'lds-spinner';
 });
 
 $homepage.addEventListener('click', function (event) {

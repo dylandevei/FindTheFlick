@@ -145,8 +145,8 @@ header {
 .result-pick {
   padding: 0.5rem;
   background-color: #404b69;
-  height: 100vh;
-  width: 90%;
+  height: 110vh;
+  width: 45vh;
   border-radius: 1rem;
   margin: 1rem auto;
   border: 0.75rem double white;
@@ -285,7 +285,7 @@ header {
 .popup-header,
 .delete-popup-header {
   position: relative;
-  padding: 1.5rem 0.7rem;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: center;
   font-family: Oswald, sans-serif;
@@ -307,7 +307,7 @@ i.delete-icon {
   color: official;
   position: fixed;
   padding: 25px 0;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80px;
