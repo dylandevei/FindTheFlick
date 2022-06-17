@@ -37,7 +37,7 @@ header {
 }
 
 .splash-image {
-  margin-top: -5rem;
+  margin-top: -2rem;
   display: flex;
   justify-content: center;
 }
@@ -298,8 +298,11 @@ header {
 }
 
 button,
-i.edit-icon,
-i.delete-icon {
+i.fa-times,
+i.fa-plus-circle,
+i.fa-trash,
+i.fa-home,
+i.fa-archive {
   cursor: pointer;
 }
 
