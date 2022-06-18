@@ -177,7 +177,7 @@ function getTheaters() {
     $loading.className = 'lds-spinner hidden';
     for (let i = 0; i < xhr.response.items.length; i++) {
       const $columnHalf = document.createElement('div');
-      $columnHalf.className = 'column-third justify-content-center';
+      $columnHalf.className = 'column-half justify-content-center';
       const $img = document.createElement('img');
       $img.setAttribute('src', xhr.response.items[i].image);
       $img.className = 'movie-posters';
@@ -191,7 +191,6 @@ function getTheaters() {
       $theaterpage.appendChild($columnHalf);
     }
   });
-
 }
 
 function openPopup(event) {
