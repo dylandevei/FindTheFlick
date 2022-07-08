@@ -23,8 +23,8 @@ Try the application live at [https://dylandevei.github.io/FindTheFlick/](https:/
 
 ## Stretch Features
 
-- implement a feature to review movies/tv shows you have watched
-- implement a feature to view friend's watchlists. 
+- Implement a feature to review movies/tv shows you have watched
+- Implement a feature to view friend's watchlists. 
 
 
 ## Preview
@@ -35,3 +35,13 @@ https://user-images.githubusercontent.com/99229316/178055778-af4cc01f-e255-4dd4-
 https://user-images.githubusercontent.com/99229316/178056016-9b095fc0-0a9c-4bcf-913c-e08f08e5908f.mov
 
 https://user-images.githubusercontent.com/99229316/178055868-a35a5887-a93b-414c-ad1e-1825238edfbc.mov
+
+## Getting Started 
+
+1. Clone the repository.
+
+    ```shell
+    git clone https://github.com/dylandevei/FindTheFlick.git
+    ```
+    
+2. Start the project. Once started you can view the application by opening http://localhost:5500 in your browser.
