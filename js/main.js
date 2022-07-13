@@ -25,6 +25,7 @@ const $resultID = document.querySelector('.result-id');
 const $resultPlot = document.querySelector('.result-plot');
 const $watchlistText = document.querySelector('.watchlist-text');
 const $loading = document.querySelector('.lds-spinner');
+const $error = document.querySelector('.error-msg');
 
 function handleClick(event) {
   const viewName = event.target.getAttribute('data-view');
@@ -118,6 +119,9 @@ function renderHomePage() {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
   xhr.responseType = 'json';
+  xhr.addEventListener('error', function () {
+    $error.className = 'error-msg';
+  });
   xhr.addEventListener('load', function () {
     for (let i = 0; i < xhr.response.items.length; i++) {
       $loading.className = 'lds-spinner hidden';

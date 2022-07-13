@@ -105,6 +105,14 @@ header {
   font-family: "Noto Sans", sans-serif;
 }
 
+.error-text {
+  font-size: 1.4rem;
+  font-family: "Noto Sans", sans-serif;
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+}
+
 .justify-content-center {
   display: flex;
   align-items: center;
