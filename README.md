@@ -44,4 +44,4 @@ https://user-images.githubusercontent.com/99229316/178055868-a35a5887-a93b-414c-
     git clone https://github.com/dylandevei/FindTheFlick.git
     ```
     
-2. Start the project. Once started you can view the application by opening http://localhost:5500 in your browser.
+2. Start the project. Once started you can view the application by opening http://localhost:5500 in your browser .
