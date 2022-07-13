@@ -7,7 +7,7 @@ A frontend JavaScript application for movie and telivision show lovers to decide
 - HTML5
 - CSS3
 - JavaScript
-- IMDB API with XMLHttpRequest.
+- IMDB API
 
 ## Live Demo
 
