@@ -37,7 +37,7 @@ header {
 }
 
 .splash-image {
-  margin-top: -5rem;
+  margin-top: -2rem;
   display: flex;
   justify-content: center;
 }
@@ -103,6 +103,14 @@ header {
 .watchlist-text {
   font-size: 1.5rem;
   font-family: "Noto Sans", sans-serif;
+}
+
+.error-text {
+  font-size: 1.4rem;
+  font-family: "Noto Sans", sans-serif;
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
 }
 
 .justify-content-center {
@@ -298,8 +306,11 @@ header {
 }
 
 button,
-i.edit-icon,
-i.delete-icon {
+i.fa-times,
+i.fa-plus-circle,
+i.fa-trash,
+i.fa-home,
+i.fa-archive {
   cursor: pointer;
 }
 

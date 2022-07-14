@@ -24,7 +24,7 @@
   <meta property="og:title" content="FindTheFlick" />
   <meta property="og:description" content="A web-based application for people who are having difficulty deciding what TV show or movie to watch." />
   <meta property="og:url" content="dylandevei.github.io/findtheflick/" />
-  <meta property="og:image" content="dylandevei.github.io/findtheflick/images/FindTheFlick_logo.png" />
+  <meta property="og:image" content="dylandevei.github.io/findtheflick/images/pexels-movie.jpeg" />
 </head>
 
 <body>
@@ -98,6 +98,9 @@
               <button class="movie-btn">Find a Random Movie</button>
               <button class="theater-btn">Find Movies in Theaters</button>
             </div>
+            <div class="error-msg">
+              <p class="error-text">There was an error with your network. Please check your connection and try again!</p>
+            </div>
           </div>
           <div class="row">
             <div class="lds-spinner hidden">
@@ -115,6 +118,7 @@
               <div></div>
             </div>
             <div class="homepage-movies">
+
             </div>
           </div>
         </div>
@@ -129,7 +133,11 @@
         <div class="container-box">
           <h1 class="text-align watchlist-header">In Theaters Now</h1>
           <div class="row">
-            <div class="theater-movies"></div>
+            <div class="theater-movies">
+              <div class="error-msg">
+                <p class="error-text">There was an error with your network. Please check your connection and try again!</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

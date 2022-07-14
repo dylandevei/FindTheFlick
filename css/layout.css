@@ -31,20 +31,8 @@
   header {
     background-color: black;
   }
-}
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 900px;
-  }
-
-  .column-full,
-  .column-half {
-    padding: 0 0.75rem;
-    width: 100%;
-  }
-
-  .column-half {
+  .column-quarter {
     width: 50%;
   }
 }
@@ -61,6 +49,26 @@
   }
 
   .column-half {
-    width: 50%;
+    width: 100%;
+  }
+
+  .column-quarter {
+    width: 25%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .container {
+      max-width: 900px;
+    }
+
+    .column-full,
+    .column-half {
+      padding: 0 0.75rem;
+      width: 100%;
+    }
+
+    .column-half {
+      width: 50%;
+    }
   }
 }
