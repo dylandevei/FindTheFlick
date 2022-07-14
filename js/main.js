@@ -121,27 +121,23 @@ function renderHomePage() {
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    if (xhr.status === 200) {
-      for (let i = 0; i < xhr.response.items.length; i++) {
-        $loading.className = 'lds-spinner hidden';
-        $error.className = 'hidden';
-        const $columnHalf = document.createElement('div');
-        $columnHalf.className = 'column-half justify-content-center';
-        const $img = document.createElement('img');
-        $img.setAttribute('src', xhr.response.items[i].image);
-        $img.className = 'movie-posters';
-        const $id = document.createElement('p');
-        $id.textContent = xhr.response.items[i].id;
-        $id.className = 'hidden';
-        $id.setAttribute('id', 'idText');
-        $img.setAttribute('id', $id.textContent);
-        $columnHalf.appendChild($img);
-        $columnHalf.appendChild($id);
-        $homepage.appendChild($columnHalf);
-      }
+    for (let i = 0; i < xhr.response.items.length; i++) {
+      $loading.className = 'lds-spinner hidden';
+      $error.className = 'hidden';
+      const $columnHalf = document.createElement('div');
+      $columnHalf.className = 'column-half justify-content-center';
+      const $img = document.createElement('img');
+      $img.setAttribute('src', xhr.response.items[i].image);
+      $img.className = 'movie-posters';
+      const $id = document.createElement('p');
+      $id.textContent = xhr.response.items[i].id;
+      $id.className = 'hidden';
+      $id.setAttribute('id', 'idText');
+      $img.setAttribute('id', $id.textContent);
+      $columnHalf.appendChild($img);
+      $columnHalf.appendChild($id);
+      $homepage.appendChild($columnHalf);
     }
-    $error.className = 'error-msg';
-
   });
   xhr.send();
 
@@ -186,6 +182,7 @@ function getTheaters() {
   xhr.addEventListener('load', function () {
     $loading.className = 'lds-spinner hidden';
     for (let i = 0; i < xhr.response.items.length; i++) {
+      $error.className = 'hidden';
       const $columnHalf = document.createElement('div');
       $columnHalf.className = 'column-half justify-content-center';
       const $img = document.createElement('img');
