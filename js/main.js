@@ -78,6 +78,7 @@ function getInformation(item) {
     $resultPlot.textContent = xhr.response.plot;
     $resultID.textContent = xhr.response.id;
     $loading.className = 'lds-spinner hidden';
+
   });
 }
 
@@ -119,26 +120,28 @@ function renderHomePage() {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
   xhr.responseType = 'json';
-  xhr.addEventListener('error', function () {
-    $error.className = 'error-msg';
-  });
   xhr.addEventListener('load', function () {
-    for (let i = 0; i < xhr.response.items.length; i++) {
-      $loading.className = 'lds-spinner hidden';
-      const $columnHalf = document.createElement('div');
-      $columnHalf.className = 'column-half justify-content-center';
-      const $img = document.createElement('img');
-      $img.setAttribute('src', xhr.response.items[i].image);
-      $img.className = 'movie-posters';
-      const $id = document.createElement('p');
-      $id.textContent = xhr.response.items[i].id;
-      $id.className = 'hidden';
-      $id.setAttribute('id', 'idText');
-      $img.setAttribute('id', $id.textContent);
-      $columnHalf.appendChild($img);
-      $columnHalf.appendChild($id);
-      $homepage.appendChild($columnHalf);
+    if (xhr.status === 200) {
+      for (let i = 0; i < xhr.response.items.length; i++) {
+        $loading.className = 'lds-spinner hidden';
+        $error.className = 'hidden';
+        const $columnHalf = document.createElement('div');
+        $columnHalf.className = 'column-half justify-content-center';
+        const $img = document.createElement('img');
+        $img.setAttribute('src', xhr.response.items[i].image);
+        $img.className = 'movie-posters';
+        const $id = document.createElement('p');
+        $id.textContent = xhr.response.items[i].id;
+        $id.className = 'hidden';
+        $id.setAttribute('id', 'idText');
+        $img.setAttribute('id', $id.textContent);
+        $columnHalf.appendChild($img);
+        $columnHalf.appendChild($id);
+        $homepage.appendChild($columnHalf);
+      }
     }
+    $error.className = 'error-msg';
+
   });
   xhr.send();
 
@@ -148,6 +151,9 @@ function getRandomTopTv() {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_q8ojj7er');
   xhr.responseType = 'json';
+  xhr.addEventListener('error', function () {
+    $error.setAttribute = 'error-msg';
+  });
   xhr.send();
   xhr.addEventListener('load', function () {
     const randomIndex = Math.floor(Math.random() * xhr.response.items.length);
