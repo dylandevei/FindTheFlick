@@ -31,7 +31,6 @@ function handleClick(event) {
   const viewName = event.target.getAttribute('data-view');
   switchViews(viewName);
   renderHomePage();
-  getTheaters();
 }
 
 function switchViews(viewName) {
@@ -47,7 +46,6 @@ function switchViews(viewName) {
 function renderEntry(entry) {
   const url = entry.imageUrl;
   const movieId = entry.movieId;
-
   const $div = document.createElement('div');
   $div.setAttribute('data-entry-id', entry.entryId);
   $div.className = 'column-half justify-content-center';
@@ -62,7 +60,6 @@ function renderEntry(entry) {
 }
 
 function getInformation(item) {
-
   $delete.className = 'hidden';
   switchViews('random-pick');
   $loading.className = 'lds-spinner';
@@ -71,13 +68,12 @@ function getInformation(item) {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
-
+    $loading.className = ' hidden';
     $resultTitle.textContent = xhr.response.title;
     $resultPoster.setAttribute('src', xhr.response.image);
     $resultStarring.textContent = xhr.response.stars;
     $resultPlot.textContent = xhr.response.plot;
     $resultID.textContent = xhr.response.id;
-    $loading.className = 'lds-spinner hidden';
 
   });
 }
@@ -165,7 +161,7 @@ function getRandomTopMovie() {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
-
+    $loading.className = ' hidden';
     const randomIndex = Math.floor(Math.random() * xhr.response.items.length);
     const item = xhr.response.items[randomIndex].id;
     getInformation(item);
@@ -174,6 +170,7 @@ function getRandomTopMovie() {
 }
 
 function getTheaters() {
+  $error.className = 'hidden';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_q8ojj7er');
@@ -286,6 +283,7 @@ $home.addEventListener('click', function (event) {
 });
 
 $theaterButton.addEventListener('click', function () {
+  getTheaters();
   switchViews('theaters-page');
   $loading.className = 'lds-spinner';
 });
