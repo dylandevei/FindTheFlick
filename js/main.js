@@ -26,6 +26,7 @@ const $resultPlot = document.querySelector('.result-plot');
 const $watchlistText = document.querySelector('.watchlist-text');
 const $loading = document.querySelector('.lds-spinner');
 const $error = document.querySelector('.error-msg');
+const $splash = document.querySelector('.nav-text');
 
 function handleClick(event) {
   const viewName = event.target.getAttribute('data-view');
@@ -219,6 +220,10 @@ function closeDelete(event) {
 
 $archive.addEventListener('click', function () {
   switchViews('entries');
+});
+
+$splash.addEventListener('click', () => {
+  switchViews('splash-image');
 });
 
 function emptyEntries() {
