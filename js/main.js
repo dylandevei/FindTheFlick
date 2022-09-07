@@ -13,6 +13,7 @@ const $archivebtn = document.querySelector('.fa-archive');
 const $exit = document.querySelector('.fa-times');
 const $archive = document.querySelector('#archive');
 const $add = document.querySelector('.fa-plus-circle');
+const $redo = document.querySelector('.fa-sync-alt');
 const $delete = document.querySelector('.fa-trash');
 const $deleteX = document.querySelector('#delete');
 const $popUp = document.querySelector('.popup');
@@ -23,6 +24,7 @@ const $resultRating = document.querySelector('.result-rating');
 const $resultPoster = document.querySelector('.result-poster');
 const $resultStarring = document.querySelector('.result-starring');
 const $resultID = document.querySelector('.result-id');
+const $resultType = document.querySelector('.result-type');
 const $resultPlot = document.querySelector('.result-plot');
 const $resultGenres = document.querySelector('.result-genres');
 const $watchlistText = document.querySelector('.watchlist-text');
@@ -76,8 +78,9 @@ function getInformation(item) {
     $resultPoster.setAttribute('src', xhr.response.image);
     $resultStarring.textContent = `Starring: ${xhr.response.stars}`;
     $resultPlot.textContent = xhr.response.plot;
-    $resultGenres.textContent = xhr.response.genres;
+    $resultGenres.textContent = `Genre: ${xhr.response.genres}`;
     $resultID.textContent = xhr.response.id;
+    $resultType.textContent = xhr.response.type;
     $resultRating.textContent = `IMDB Rating: ${xhr.response.imDbRating}`;
   });
 }
@@ -264,7 +267,8 @@ $add.addEventListener('click', function (event) {
     movieId: $resultID.textContent,
     entryId: data.nextEntryId,
     rating: $resultRating.textContent,
-    genres: $resultGenres.textContent
+    genres: $resultGenres.textContent,
+    type: $resultType.textContent
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
@@ -289,6 +293,7 @@ $deleteX.addEventListener('click', function (event) {
 $home.addEventListener('click', function (event) {
   switchViews('home-page');
   $add.className = 'fas fa-plus-circle';
+  $redo.className = 'fas fa-sync-alt';
   $loading.className = 'hidden';
 });
 
@@ -307,10 +312,20 @@ $entrypage.addEventListener('click', function (event) {
   const entryId = event.target.getAttribute('id');
   getInformation(entryId);
   $add.className = 'hidden';
+  $redo.className = 'hidden';
   $delete.className = 'fas fa-trash';
 });
 
 $theaterpage.addEventListener('click', function (event) {
   const theaterID = event.target.getAttribute('id');
   getInformation(theaterID);
+});
+
+$redo.addEventListener('click', event => {
+  const type = $resultType.textContent;
+  if (type === 'Movie') {
+    getRandomTopMovie();
+  } else if (type === 'TVSeries') {
+    getRandomTopTv();
+  }
 });
