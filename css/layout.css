@@ -1,5 +1,5 @@
 .container {
-  max-width: 575px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
@@ -27,48 +27,14 @@
   width: calc(100% / 3);
 }
 
-@media screen and (max-width: 500px) {
-  header {
-    background-color: black;
-  }
-
-  .column-quarter {
-    width: 50%;
+@media only screen and (min-width: 768px) {
+  .column-third {
+    width: calc(100% / 3);
   }
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 900px;
-  }
-
-  .column-full,
-  .column-half {
-    padding: 0 0.75rem;
-    width: 100%;
-  }
-
-  .column-half {
-    width: 100%;
-  }
-
-  .column-quarter {
-    width: 25%;
-  }
-
-  @media screen and (min-width: 768px) {
-    .container {
-      max-width: 900px;
-    }
-
-    .column-full,
-    .column-half {
-      padding: 0 0.75rem;
-      width: 100%;
-    }
-
-    .column-half {
-      width: 50%;
-    }
+@media only screen and (min-width: 768px) and (max-width: 1100px) {
+  .column-third {
+    width: 50%;
   }
 }

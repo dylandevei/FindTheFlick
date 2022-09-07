@@ -19,6 +19,7 @@ const $popUp = document.querySelector('.popup');
 const $deletePopUp = document.querySelector('.delete-popup');
 const $overlay = document.querySelector('.overlay');
 const $resultTitle = document.querySelector('.result-title');
+const $resultRating = document.querySelector('.result-rating');
 const $resultPoster = document.querySelector('.result-poster');
 const $resultStarring = document.querySelector('.result-starring');
 const $resultID = document.querySelector('.result-id');
@@ -72,9 +73,10 @@ function getInformation(item) {
     $loading.className = ' hidden';
     $resultTitle.textContent = xhr.response.title;
     $resultPoster.setAttribute('src', xhr.response.image);
-    $resultStarring.textContent = xhr.response.stars;
+    $resultStarring.textContent = `Starring: ${xhr.response.stars}`;
     $resultPlot.textContent = xhr.response.plot;
     $resultID.textContent = xhr.response.id;
+    $resultRating.textContent = `IMDB Rating: ${xhr.response.imDbRating}`;
 
   });
 }
@@ -259,7 +261,8 @@ $add.addEventListener('click', function (event) {
     actors: $resultStarring.textContent,
     plot: $resultPlot.textContent,
     movieId: $resultID.textContent,
-    entryId: data.nextEntryId
+    entryId: data.nextEntryId,
+    rating: $resultRating.textContent
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
