@@ -142,6 +142,7 @@ function renderHomePage() {
       $homepage.appendChild($columnHalf);
     }
   });
+
   xhr.send();
 
 }
