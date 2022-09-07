@@ -24,6 +24,7 @@ const $resultPoster = document.querySelector('.result-poster');
 const $resultStarring = document.querySelector('.result-starring');
 const $resultID = document.querySelector('.result-id');
 const $resultPlot = document.querySelector('.result-plot');
+const $resultGenres = document.querySelector('.result-genres');
 const $watchlistText = document.querySelector('.watchlist-text');
 const $loading = document.querySelector('.lds-spinner');
 const $error = document.querySelector('.error-msg');
@@ -66,18 +67,18 @@ function getInformation(item) {
   switchViews('random-pick');
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_q8ojj7er/' + item);
+  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
     $loading.className = ' hidden';
-    $resultTitle.textContent = xhr.response.title;
+    $resultTitle.textContent = xhr.response.fullTitle;
     $resultPoster.setAttribute('src', xhr.response.image);
     $resultStarring.textContent = `Starring: ${xhr.response.stars}`;
     $resultPlot.textContent = xhr.response.plot;
+    $resultGenres.textContent = xhr.response.genres;
     $resultID.textContent = xhr.response.id;
     $resultRating.textContent = `IMDB Rating: ${xhr.response.imDbRating}`;
-
   });
 }
 
@@ -117,7 +118,7 @@ function renderHomePage() {
   $archivebtn.className = 'fas fa-archive';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (let i = 0; i < xhr.response.items.length; i++) {
@@ -144,7 +145,7 @@ function renderHomePage() {
 
 function getRandomTopTv() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('error', function () {
     $error.setAttribute = 'error-msg';
@@ -160,7 +161,7 @@ function getRandomTopTv() {
 
 function getRandomTopMovie() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -176,7 +177,7 @@ function getTheaters() {
   $error.className = 'hidden';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -262,7 +263,8 @@ $add.addEventListener('click', function (event) {
     plot: $resultPlot.textContent,
     movieId: $resultID.textContent,
     entryId: data.nextEntryId,
-    rating: $resultRating.textContent
+    rating: $resultRating.textContent,
+    genres: $resultGenres.textContent
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
