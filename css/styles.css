@@ -15,6 +15,7 @@ header {
   color: white;
   font-family: Oswald, sans-serif;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .nav-icons {
@@ -168,7 +169,21 @@ header {
   text-align: center;
   font-family: Oswald, sans-serif;
   color: white;
-  font-size: 2rem;
+  font-size: 1.75rem;
+}
+
+.result-genres {
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.result-rating {
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  color: white;
+  font-size: 1.2rem;
 }
 
 .result-poster {
@@ -188,22 +203,15 @@ header {
   text-align: center;
   font-family: "Noto Sans", sans-serif;
   color: white;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   line-height: 1.2;
   position: relative;
-}
-
-.fa-plus-circle,
-.fa-trash {
-  position: absolute;
-  right: 47%;
 }
 
 .pick-icons {
   font-size: 2rem;
   display: flex;
-  justify-content: space-around;
-  position: relative;
+  justify-content: center;
 }
 
 .fa-times,
@@ -246,6 +254,19 @@ header {
 .fa-plus-circle {
   color: rgb(0, 212, 0);
   opacity: 70%;
+}
+
+.fa-sync-alt {
+  color: rgb(255, 252, 91);
+  opacity: 70%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.fa-sync-alt:hover {
+  color: rgb(255, 252, 91);
+  opacity: 100%;
 }
 
 .fa-plus-circle:hover {
@@ -409,5 +430,19 @@ i.fa-archive {
 
   100% {
     opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .result-plot {
+    font-size: 0.75rem;
+  }
+
+  .result-starring {
+    font-size: 0.8rem;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
   }
 }
