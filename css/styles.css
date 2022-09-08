@@ -438,7 +438,9 @@ i.fa-archive {
     font-size: 0.75rem;
   }
 
-  .result-starring {
+  .result-starring,
+  .result-genres,
+  .result-rating {
     font-size: 0.8rem;
   }
 
