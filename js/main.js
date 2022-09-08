@@ -69,7 +69,7 @@ function getInformation(item) {
   switchViews('random-pick');
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
+  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_0lkmbw9n/' + item);
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -121,7 +121,7 @@ function renderHomePage() {
   $archivebtn.className = 'fas fa-archive';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_0lkmbw9n');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (let i = 0; i < xhr.response.items.length; i++) {
@@ -149,7 +149,7 @@ function renderHomePage() {
 
 function getRandomTopTv() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_93i87hmc');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_0lkmbw9n');
   xhr.responseType = 'json';
   xhr.addEventListener('error', function () {
     $error.setAttribute = 'error-msg';
@@ -165,7 +165,7 @@ function getRandomTopTv() {
 
 function getRandomTopMovie() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_0lkmbw9n');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -181,7 +181,7 @@ function getTheaters() {
   $error.className = 'hidden';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_93i87hmc');
+  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_0lkmbw9n');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
