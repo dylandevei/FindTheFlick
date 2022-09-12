@@ -435,6 +435,16 @@ i.fa-archive {
 }
 
 @media only screen and (max-width: 500px) {
+  .result-pick {
+    padding: 0.5rem;
+    background-color: #404b69;
+    height: 110vh;
+    width: 50vh;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    border: 0.75rem double white;
+  }
+
   .result-plot {
     font-size: 0.75rem;
   }
@@ -447,5 +457,17 @@ i.fa-archive {
 
   .result-title {
     font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .result-pick {
+    padding: 0.5rem;
+    background-color: #404b69;
+    height: 90vh;
+    width: 50vh;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    border: 0.75rem double white;
   }
 }
