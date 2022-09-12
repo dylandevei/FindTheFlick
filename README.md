@@ -27,14 +27,31 @@ Try the application live at [https://dylandevei.github.io/FindTheFlick/](https:/
 - Implement a feature to view friend's watchlists. 
 
 
-## Preview
+## Preview of FindTheFlick
+
+***Getting started and viewing the homepage***
+
+https://user-images.githubusercontent.com/99229316/189756139-34c18894-36e3-412b-a87b-1dec3bec94a4.mov
 
 
-https://user-images.githubusercontent.com/99229316/178055778-af4cc01f-e255-4dd4-bef3-7c2f29d26928.mov
 
-https://user-images.githubusercontent.com/99229316/178056016-9b095fc0-0a9c-4bcf-913c-e08f08e5908f.mov
 
-https://user-images.githubusercontent.com/99229316/178055868-a35a5887-a93b-414c-ad1e-1825238edfbc.mov
+***Users can click either button to get a random movie or tv show! Users can then hit the 'redo' button to another random pick!***
+
+https://user-images.githubusercontent.com/99229316/189756256-34c9323d-3c53-4176-8241-4d55db222ebb.mov
+
+
+
+***Users can delete saved movies after they have watched their pick, or whenever they want!***
+
+https://user-images.githubusercontent.com/99229316/189756436-08a29d7f-6fe4-4ec1-b2c2-80c5ff5ed802.mov
+
+
+***Users can view the list of movies currently being shown in theaters!***
+
+https://user-images.githubusercontent.com/99229316/189756477-f0afb1ad-27bc-48df-a298-cc5e2ff5e45f.mov
+
+
 
 ## Getting Started 
 
