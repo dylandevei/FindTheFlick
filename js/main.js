@@ -312,7 +312,8 @@ $homepage.addEventListener('click', function (event) {
 });
 
 $entrypage.addEventListener('click', function (event) {
-  const entryId = event.target.getAttribute('id');
+  const closestPoster = event.target.closest('IMG');
+  const entryId = closestPoster.getAttribute('id');
   getInformation(entryId);
   $add.className = 'hidden';
   $redo.className = 'hidden';
