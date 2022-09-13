@@ -95,11 +95,13 @@
       <div class="view hidden" data-view="search-results">
         <div class="container-box">
           <h1 class="text-align search-header">Search</h1>
-          <div class="search-div">
-            <input type="text" id="search-bar">
-            <i class="fas fa-search submit-btn" id="submit"></i>
-          </div>
-          <p class="text-align search-text" id="search-results">search results are empty...</p>
+          <form id="search-form" action="submit">
+            <div class="search-div">
+              <input type="text" name="title" id="search-bar">
+              <button class="submit-btn"><i class="fas fa-search" id="submit"></i></button>
+            </div>
+          </form>
+          <p class="text-align search-text hidden" id="search-results">search results are empty...</p>
           <div class="search-movies"></div>
         </div>
       </div>

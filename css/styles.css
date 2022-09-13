@@ -150,7 +150,8 @@ header {
 
 .homepage-movies,
 .entry-movies,
-.theater-movies {
+.theater-movies,
+.search-movies {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -292,12 +293,20 @@ header {
   padding: 1rem;
   margin-left: 0.3rem;
   font-size: 1rem;
+  outline: none;
+}
+
+.submit-btn {
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 
 .search-div {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
 .fa-plus-circle {
