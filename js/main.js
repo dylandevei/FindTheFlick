@@ -8,6 +8,7 @@ const $theaterpage = document.querySelector('.theater-movies');
 const $entrypage = document.querySelector('.entry-movies');
 const $view = document.querySelectorAll('.view');
 const $home = document.querySelector('#home');
+const $search = document.querySelector('#search');
 const $homebtn = document.querySelector('.fa-home');
 const $archivebtn = document.querySelector('.fa-archive');
 const $exit = document.querySelector('.fa-times');
@@ -119,6 +120,7 @@ function renderHomePage() {
   switchViews('home-page');
   $homebtn.className = 'fas fa-home';
   $archivebtn.className = 'fas fa-archive';
+  $search.className = 'fas fa-search';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_0lkmbw9n');
