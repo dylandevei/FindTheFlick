@@ -21,13 +21,14 @@ header {
 .nav-icons {
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 .fa-archive,
-.fa-home {
-  font-size: 2.4rem;
-  padding: 1rem;
-  margin-top: 1.2rem;
+.fa-home,
+.fa-search {
+  font-size: 2rem;
+  padding: 0.9rem;
 }
 
 #splash {
@@ -74,7 +75,6 @@ header {
 }
 
 .tv-btn,
-.movie-btn,
 .theater-btn,
 .confirm-btn {
   margin-top: 1.4rem;
@@ -89,19 +89,35 @@ header {
   text-transform: uppercase;
 }
 
+.movie-btn {
+  margin-top: 1.4rem;
+  margin-bottom: 0.8rem;
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 1.2rem;
+  border: none;
+  padding: 1rem 2.2rem;
+  font-size: 1.2rem;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
 .text-align {
   text-align: center;
 }
 
-.watchlist-header {
+.watchlist-header,
+.search-header {
   margin: 0 auto;
+  padding-bottom: 1rem;
   font-size: 3rem;
   font-family: Oswald, sans-serif;
   letter-spacing: 0.7rem;
   text-transform: uppercase;
 }
 
-.watchlist-text {
+.watchlist-text,
+.search-text {
   font-size: 1.5rem;
   font-family: "Noto Sans", sans-serif;
 }
@@ -124,16 +140,18 @@ header {
 }
 
 .movie-posters {
-  padding: 0.4rem 0;
+  padding: 0.4rem 1rem;
   height: 100%;
   width: 100%;
+  border-radius: 2rem;
   object-fit: cover;
   cursor: pointer;
 }
 
 .homepage-movies,
 .entry-movies,
-.theater-movies {
+.theater-movies,
+.search-movies {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -189,8 +207,11 @@ header {
 
 .result-poster {
   height: 50vh;
-  width: 100%;
-  object-fit: contain;
+  width: 75%;
+  object-fit: fill;
+  display: block;
+  margin: auto;
+  border-radius: 1rem;
 }
 
 .result-starring {
@@ -226,7 +247,7 @@ header {
 
 .fa-trash {
   color: #f73859;
-  opacity: 80%;
+  opacity: 50%;
 }
 
 .fa-trash:hover {
@@ -241,25 +262,61 @@ header {
 }
 
 #home,
-.fa-archive {
+#archive,
+#search {
   color: white;
-  opacity: 70%;
+  opacity: 50%;
 }
 
 #home:hover,
-.fa-archive:hover {
+#archive:hover,
+#search:hover {
   color: white;
   opacity: 100%;
 }
 
+#search-bar {
+  width: 75%;
+  height: 3rem;
+  border: none;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.search-div .fa-search {
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 1.2rem;
+  border: none;
+  padding: 1rem;
+  margin-left: 0.3rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.submit-btn {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.search-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
 .fa-plus-circle {
   color: rgb(0, 212, 0);
-  opacity: 70%;
+  opacity: 50%;
 }
 
 .fa-sync-alt {
   color: white;
-  opacity: 70%;
+  opacity: 50%;
   font-size: 2rem;
   display: flex;
   justify-content: center;
@@ -309,7 +366,7 @@ header {
   background-color: white;
   border-radius: 1rem;
   z-index: 1;
-  width: 22rem;
+  width: 20rem;
   border: 10px double #f7385a;
 }
 
@@ -333,7 +390,8 @@ i.fa-times,
 i.fa-plus-circle,
 i.fa-trash,
 i.fa-home,
-i.fa-archive {
+i.fa-archive,
+i.fa-search {
   cursor: pointer;
 }
 

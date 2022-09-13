@@ -4,13 +4,16 @@ const $movieButton = document.querySelector('.movie-btn');
 const $theaterButton = document.querySelector('.theater-btn');
 const $confirmButton = document.querySelector('.confirm-btn');
 const $homepage = document.querySelector('.homepage-movies');
+const $searchpage = document.querySelector('.search-movies');
 const $theaterpage = document.querySelector('.theater-movies');
 const $entrypage = document.querySelector('.entry-movies');
 const $view = document.querySelectorAll('.view');
 const $home = document.querySelector('#home');
+const $search = document.querySelector('#search');
 const $homebtn = document.querySelector('.fa-home');
 const $archivebtn = document.querySelector('.fa-archive');
 const $exit = document.querySelector('.fa-times');
+const $searchBar = document.querySelector('#search-form');
 const $archive = document.querySelector('#archive');
 const $add = document.querySelector('.fa-plus-circle');
 const $redo = document.querySelector('.fa-sync-alt');
@@ -31,6 +34,7 @@ const $watchlistText = document.querySelector('.watchlist-text');
 const $loading = document.querySelector('.lds-spinner');
 const $error = document.querySelector('.error-msg');
 const $splash = document.querySelector('.nav-text');
+const $searchText = document.querySelector('.search-text');
 
 function handleClick(event) {
   const viewName = event.target.getAttribute('data-view');
@@ -69,7 +73,7 @@ function getInformation(item) {
   switchViews('random-pick');
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_0lkmbw9n/' + item);
+  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -115,13 +119,60 @@ function deleteEntry(event) {
   data.editing = null;
 }
 
+$searchBar.addEventListener('submit', event => {
+  event.preventDefault();
+  removeSearchResults();
+  let title = null;
+  title = $searchBar.elements.title.value;
+  $loading.className = 'lds-spinner';
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://imdb-api.com/en/API/Search/k_93i87hmc/' + title);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    if (xhr.response.results.length === 0) {
+      $searchText.textContent = 'No Results Found, Try Again';
+    }
+    for (let i = 0; i < xhr.response.results.length; i++) {
+      $searchText.textContent = 'Results for' + ' ' + title;
+      $loading.className = 'lds-spinner hidden';
+      $error.className = 'hidden';
+      const $columnHalf = document.createElement('div');
+      $columnHalf.className = 'column-half justify-content-center';
+      const $img = document.createElement('img');
+      $img.setAttribute('src', xhr.response.results[i].image);
+      $img.className = 'movie-posters';
+      const $id = document.createElement('p');
+      $id.textContent = xhr.response.results[i].id;
+      $id.className = 'hidden';
+      $id.setAttribute('id', 'idText');
+      $img.setAttribute('id', $id.textContent);
+      $columnHalf.appendChild($img);
+      $columnHalf.appendChild($id);
+      $searchpage.appendChild($columnHalf);
+
+    }
+  });
+  xhr.send();
+});
+
+function removeSearchResults() {
+  const $posters = document.querySelectorAll('.movie-posters');
+  for (let i = 0; i < $posters.length; i++) {
+    $posters[i].remove();
+    $searchBar.reset();
+    $searchText.textContent = '';
+
+  }
+}
+
 function renderHomePage() {
   switchViews('home-page');
   $homebtn.className = 'fas fa-home';
   $archivebtn.className = 'fas fa-archive';
+  $search.className = 'fas fa-search';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_0lkmbw9n');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (let i = 0; i < xhr.response.items.length; i++) {
@@ -149,7 +200,7 @@ function renderHomePage() {
 
 function getRandomTopTv() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_0lkmbw9n');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('error', function () {
     $error.setAttribute = 'error-msg';
@@ -165,7 +216,7 @@ function getRandomTopTv() {
 
 function getRandomTopMovie() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_0lkmbw9n');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -181,7 +232,7 @@ function getTheaters() {
   $error.className = 'hidden';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_0lkmbw9n');
+  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -298,6 +349,11 @@ $home.addEventListener('click', function (event) {
   $loading.className = 'hidden';
 });
 
+$search.addEventListener('click', function (event) {
+  switchViews('search-results');
+  removeSearchResults();
+});
+
 $theaterButton.addEventListener('click', function () {
   getTheaters();
   switchViews('theaters-page');
@@ -309,8 +365,14 @@ $homepage.addEventListener('click', function (event) {
   getInformation(homepageID);
 });
 
+$searchpage.addEventListener('click', function (event) {
+  const homepageID = event.target.getAttribute('id');
+  getInformation(homepageID);
+});
+
 $entrypage.addEventListener('click', function (event) {
-  const entryId = event.target.getAttribute('id');
+  const closestPoster = event.target.closest('IMG');
+  const entryId = closestPoster.getAttribute('id');
   getInformation(entryId);
   $add.className = 'hidden';
   $redo.className = 'hidden';
