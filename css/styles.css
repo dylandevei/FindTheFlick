@@ -227,7 +227,7 @@ header {
 
 .fa-trash {
   color: #f73859;
-  opacity: 80%;
+  opacity: 50%;
 }
 
 .fa-trash:hover {
@@ -242,25 +242,27 @@ header {
 }
 
 #home,
-#archive {
+#archive,
+#search {
   color: white;
-  opacity: 70%;
+  opacity: 50%;
 }
 
 #home:hover,
-.fa-archive:hover {
+#archive:hover,
+#search:hover {
   color: white;
   opacity: 100%;
 }
 
 .fa-plus-circle {
   color: rgb(0, 212, 0);
-  opacity: 70%;
+  opacity: 50%;
 }
 
 .fa-sync-alt {
   color: white;
-  opacity: 70%;
+  opacity: 50%;
   font-size: 2rem;
   display: flex;
   justify-content: center;
