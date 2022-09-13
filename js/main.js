@@ -300,6 +300,10 @@ $home.addEventListener('click', function (event) {
   $loading.className = 'hidden';
 });
 
+$search.addEventListener('click', function (event) {
+  switchViews('search-results');
+});
+
 $theaterButton.addEventListener('click', function () {
   getTheaters();
   switchViews('theaters-page');

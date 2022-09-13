@@ -106,7 +106,8 @@ header {
   text-align: center;
 }
 
-.watchlist-header {
+.watchlist-header,
+.search-header {
   margin: 0 auto;
   font-size: 3rem;
   font-family: Oswald, sans-serif;
@@ -114,7 +115,8 @@ header {
   text-transform: uppercase;
 }
 
-.watchlist-text {
+.watchlist-text,
+.search-text {
   font-size: 1.5rem;
   font-family: "Noto Sans", sans-serif;
 }
