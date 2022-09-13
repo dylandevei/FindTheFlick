@@ -34,6 +34,7 @@ const $watchlistText = document.querySelector('.watchlist-text');
 const $loading = document.querySelector('.lds-spinner');
 const $error = document.querySelector('.error-msg');
 const $splash = document.querySelector('.nav-text');
+const $searchText = document.querySelector('.search-text');
 
 function handleClick(event) {
   const viewName = event.target.getAttribute('data-view');
@@ -72,7 +73,7 @@ function getInformation(item) {
   switchViews('random-pick');
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_q8ojj7er/' + item);
+  xhr.open('GET', 'https://imdb-api.com/en/API/Title/k_93i87hmc/' + item);
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -119,16 +120,20 @@ function deleteEntry(event) {
 }
 
 $searchBar.addEventListener('submit', event => {
-  let submitData = null;
   event.preventDefault();
-  submitData = $searchBar.elements.title.value;
-  console.log(submitData);
+  removeSearchResults();
+  let title = null;
+  title = $searchBar.elements.title.value;
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/Search/k_q8ojj7er/' + submitData);
+  xhr.open('GET', 'https://imdb-api.com/en/API/Search/k_93i87hmc/' + title);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
+    if (xhr.response.results.length === 0) {
+      $searchText.textContent = 'No Results Found, Try Again';
+    }
     for (let i = 0; i < xhr.response.results.length; i++) {
+      $searchText.textContent = 'Results for' + ' ' + title;
       $loading.className = 'lds-spinner hidden';
       $error.className = 'hidden';
       const $columnHalf = document.createElement('div');
@@ -144,11 +149,21 @@ $searchBar.addEventListener('submit', event => {
       $columnHalf.appendChild($img);
       $columnHalf.appendChild($id);
       $searchpage.appendChild($columnHalf);
+
     }
   });
-
   xhr.send();
 });
+
+function removeSearchResults() {
+  const $posters = document.querySelectorAll('.movie-posters');
+  for (let i = 0; i < $posters.length; i++) {
+    $posters[i].remove();
+    $searchBar.reset();
+    $searchText.textContent = '';
+
+  }
+}
 
 function renderHomePage() {
   switchViews('home-page');
@@ -157,7 +172,7 @@ function renderHomePage() {
   $search.className = 'fas fa-search';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (let i = 0; i < xhr.response.items.length; i++) {
@@ -185,7 +200,7 @@ function renderHomePage() {
 
 function getRandomTopTv() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.addEventListener('error', function () {
     $error.setAttribute = 'error-msg';
@@ -201,7 +216,7 @@ function getRandomTopTv() {
 
 function getRandomTopMovie() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -217,7 +232,7 @@ function getTheaters() {
   $error.className = 'hidden';
   $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_q8ojj7er');
+  xhr.open('GET', 'https://imdb-api.com/en/API/InTheaters/k_93i87hmc');
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
@@ -336,7 +351,7 @@ $home.addEventListener('click', function (event) {
 
 $search.addEventListener('click', function (event) {
   switchViews('search-results');
-  $searchBar.reset();
+  removeSearchResults();
 });
 
 $theaterButton.addEventListener('click', function () {
