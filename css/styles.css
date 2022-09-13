@@ -276,7 +276,7 @@ header {
 }
 
 #search-bar {
-  width: 75%;
+  width: 70%;
   height: 3rem;
   border: none;
   border-radius: 1rem;
@@ -307,6 +307,7 @@ header {
   justify-content: center;
   align-items: center;
   margin-bottom: 3rem;
+  padding: 0 2rem;
 }
 
 .fa-plus-circle {
@@ -519,7 +520,7 @@ i.fa-search {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
