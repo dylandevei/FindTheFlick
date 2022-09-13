@@ -120,12 +120,12 @@ function deleteEntry(event) {
 }
 
 $searchBar.addEventListener('submit', event => {
-  event.preventDefault();
   removeSearchResults();
+  event.preventDefault();
   let title = null;
   title = $searchBar.elements.title.value;
-  $loading.className = 'lds-spinner';
   const xhr = new XMLHttpRequest();
+  $loading.className = 'lds-spinner';
   xhr.open('GET', 'https://imdb-api.com/en/API/Search/k_93i87hmc/' + title);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -149,7 +149,7 @@ $searchBar.addEventListener('submit', event => {
       $columnHalf.appendChild($img);
       $columnHalf.appendChild($id);
       $searchpage.appendChild($columnHalf);
-
+      $searchBar.className = 'hidden';
     }
   });
   xhr.send();
@@ -351,6 +351,8 @@ $home.addEventListener('click', function (event) {
 
 $search.addEventListener('click', function (event) {
   switchViews('search-results');
+  $searchBar.className = '';
+  // $searchBar.setAttribute = ('id', 'search-form');
   removeSearchResults();
 });
 
