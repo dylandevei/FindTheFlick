@@ -26,8 +26,8 @@ header {
 .fa-archive,
 .fa-home,
 .fa-search {
-  font-size: 2.4rem;
-  padding: 1rem;
+  font-size: 2rem;
+  padding: 0.9rem;
   margin-top: 1.2rem;
 }
 
@@ -75,7 +75,6 @@ header {
 }
 
 .tv-btn,
-.movie-btn,
 .theater-btn,
 .confirm-btn {
   margin-top: 1.4rem;
@@ -85,6 +84,19 @@ header {
   border-radius: 1.2rem;
   border: none;
   padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+.movie-btn {
+  margin-top: 1.4rem;
+  margin-bottom: 0.8rem;
+  background-color: #f73859;
+  color: #fff;
+  border-radius: 1.2rem;
+  border: none;
+  padding: 1rem 2.2rem;
   font-size: 1.2rem;
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
