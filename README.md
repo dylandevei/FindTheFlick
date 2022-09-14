@@ -20,11 +20,11 @@ Try the application live at [https://dylandevei.github.io/FindTheFlick/](https:/
 - Users can view their watchlist.
 - Users can view a list of top movies in theaters now.
 - Users can delete their watchlist entries.
+- Users can search for specific TV shows or movies
 
 ## Stretch Features
 
-- Implement a feature to review movies/tv shows you have watched
-- Implement a feature to view friend's watchlists. 
+- Implement a feature to scroll between saved entries on your watchlist
 
 
 ## Preview of FindTheFlick
