@@ -120,7 +120,6 @@ function deleteEntry(event) {
 }
 
 $searchBar.addEventListener('submit', event => {
-  removeSearchResults();
   event.preventDefault();
   let title = null;
   title = $searchBar.elements.title.value;
@@ -140,7 +139,7 @@ $searchBar.addEventListener('submit', event => {
       $columnHalf.className = 'column-half justify-content-center';
       const $img = document.createElement('img');
       $img.setAttribute('src', xhr.response.results[i].image);
-      $img.className = 'movie-posters';
+      $img.className = 'search-result-posters';
       const $id = document.createElement('p');
       $id.textContent = xhr.response.results[i].id;
       $id.className = 'hidden';
@@ -156,7 +155,7 @@ $searchBar.addEventListener('submit', event => {
 });
 
 function removeSearchResults() {
-  const $posters = document.querySelectorAll('.movie-posters');
+  const $posters = document.querySelectorAll('.search-result-posters');
   for (let i = 0; i < $posters.length; i++) {
     $posters[i].remove();
     $searchBar.reset();
@@ -351,9 +350,8 @@ $home.addEventListener('click', function (event) {
 
 $search.addEventListener('click', function (event) {
   switchViews('search-results');
-  $searchBar.className = '';
-  // $searchBar.setAttribute = ('id', 'search-form');
   removeSearchResults();
+  $searchBar.className = '';
 });
 
 $theaterButton.addEventListener('click', function () {
