@@ -352,6 +352,8 @@ $search.addEventListener('click', function (event) {
   switchViews('search-results');
   removeSearchResults();
   $searchBar.className = '';
+  $add.className = 'fas fa-plus-circle';
+  $redo.className = 'hidden';
 });
 
 $theaterButton.addEventListener('click', function () {

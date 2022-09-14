@@ -168,15 +168,14 @@ header {
 }
 
 .generated-random-pick {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .result-pick {
   padding: 0.5rem;
   background-color: #404b69;
   height: 90vh;
-  width: 45vh;
+  width: 70%;
   border-radius: 1rem;
   margin: 1rem auto;
   border: 0.75rem double white;
@@ -208,8 +207,8 @@ header {
 }
 
 .result-poster {
-  height: 50vh;
-  width: 75%;
+  height: 100%;
+  width: 100%;
   object-fit: fill;
   display: block;
   margin: auto;
@@ -501,7 +500,7 @@ i.fa-search {
     padding: 0.5rem;
     background-color: #404b69;
     height: 110vh;
-    width: 45vh;
+    width: 70%;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -509,6 +508,15 @@ i.fa-search {
 
   .result-plot {
     font-size: 0.75rem;
+  }
+
+  .result-poster {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    display: block;
+    margin: auto;
+    border-radius: 1rem;
   }
 
   .result-starring,
@@ -521,16 +529,48 @@ i.fa-search {
   .result-title {
     font-size: 1.5rem;
   }
+
+  .generated-random-pick {
+    margin: 0 auto;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 110vh;
-    width: 45vh;
+    height: 100%;
+    width: 100%;
     border-radius: 1rem;
-    margin: 1 auto;
+    margin: 1rem auto;
     border: 0.75rem double white;
+  }
+
+  .result-plot {
+    font-size: 0.75rem;
+  }
+
+  .result-poster {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    display: block;
+    margin: auto;
+    border-radius: 1rem;
+  }
+
+  .result-starring,
+  .result-genres,
+  .result-rating,
+  .search-text {
+    font-size: 0.8rem;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
+  }
+
+  .generated-random-pick {
+    margin: 0 auto;
   }
 }
