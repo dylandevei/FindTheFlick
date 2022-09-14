@@ -120,7 +120,6 @@ function deleteEntry(event) {
 }
 
 $searchBar.addEventListener('submit', event => {
-  // removeSearchResults();
   event.preventDefault();
   let title = null;
   title = $searchBar.elements.title.value;
