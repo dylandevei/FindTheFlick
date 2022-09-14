@@ -9,6 +9,7 @@ header {
 
 .nav-container {
   background-color: #404b69;
+  width: 100%;
 }
 
 .nav-text {
@@ -500,7 +501,7 @@ i.fa-search {
     padding: 0.5rem;
     background-color: #404b69;
     height: 110vh;
-    width: 40vh;
+    width: 45vh;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -512,7 +513,8 @@ i.fa-search {
 
   .result-starring,
   .result-genres,
-  .result-rating {
+  .result-rating,
+  .search-text {
     font-size: 0.8rem;
   }
 
@@ -526,9 +528,9 @@ i.fa-search {
     padding: 0.5rem;
     background-color: #404b69;
     height: 110vh;
-    width: 40vh;
+    width: 45vh;
     border-radius: 1rem;
-    margin: 1rem auto;
+    margin: 1 auto;
     border: 0.75rem double white;
   }
 }
