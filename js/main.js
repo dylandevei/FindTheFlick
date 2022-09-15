@@ -166,6 +166,7 @@ function removeSearchResults() {
 
 function renderHomePage() {
   switchViews('home-page');
+  $redo.className = 'hidden';
   $homebtn.className = 'fas fa-home';
   $archivebtn.className = 'fas fa-archive';
   $search.className = 'fas fa-search';
@@ -198,6 +199,7 @@ function renderHomePage() {
 }
 
 function getRandomTopTv() {
+  $redo.className = 'fas fa-sync-alt';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularTVs/k_93i87hmc');
   xhr.responseType = 'json';
@@ -214,6 +216,7 @@ function getRandomTopTv() {
 }
 
 function getRandomTopMovie() {
+  $redo.className = 'fas fa-sync-alt';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/MostPopularMovies/k_93i87hmc');
   xhr.responseType = 'json';
@@ -344,7 +347,7 @@ $deleteX.addEventListener('click', function (event) {
 $home.addEventListener('click', function (event) {
   switchViews('home-page');
   $add.className = 'fas fa-plus-circle';
-  $redo.className = 'fas fa-sync-alt';
+  $redo.className = 'hidden';
   $loading.className = 'hidden';
 });
 
