@@ -110,7 +110,6 @@ header {
 .watchlist-header,
 .search-header {
   margin: 0 auto;
-  padding-bottom: 1rem;
   font-size: 3rem;
   font-family: Oswald, sans-serif;
   letter-spacing: 0.7rem;
@@ -175,7 +174,7 @@ header {
 .result-pick {
   padding: 0.5rem;
   background-color: #404b69;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   border-radius: 1rem;
   margin: 1rem auto;
@@ -302,7 +301,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3rem;
+  margin: 2rem 0;
   padding: 0 2rem;
 }
 
@@ -534,8 +533,8 @@ i.fa-search {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 90vh;
-    width: 100%;
+    height: 80vh;
+    width: 90%;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -546,8 +545,8 @@ i.fa-search {
   }
 
   .result-poster {
-    height: 75%;
-    width: 75%;
+    height: 100%;
+    width: 70%;
     object-fit: fill;
     display: block;
     margin: auto;
