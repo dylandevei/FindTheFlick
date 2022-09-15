@@ -175,8 +175,8 @@ header {
 .result-pick {
   padding: 0.5rem;
   background-color: #404b69;
-  height: 90vh;
-  width: 100%;
+  height: 75rem;
+  width: 80%;
   border-radius: 1rem;
   margin: 1rem auto;
   border: 0.75rem double white;
@@ -493,8 +493,8 @@ i.fa-search {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 65vh;
-    width: 100%;
+    height: 75rem;
+    width: 75%;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -532,8 +532,8 @@ i.fa-search {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 85vh;
-    width: 90%;
+    height: 75rem;
+    width: 75%;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -544,8 +544,8 @@ i.fa-search {
   }
 
   .result-poster {
-    height: 40rem;
-    width: 30rem;
+    height: 80%;
+    width: 50%;
     object-fit: contain;
     display: block;
     margin: auto;
