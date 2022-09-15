@@ -159,7 +159,7 @@ function removeSearchResults() {
   for (let i = 0; i < $posters.length; i++) {
     $posters[i].remove();
     $searchBar.reset();
-    $searchText.textContent = '';
+    $searchText.textContent = 'Search for any TV show or movie!';
 
   }
 }
@@ -354,6 +354,7 @@ $search.addEventListener('click', function (event) {
   $searchBar.className = '';
   $add.className = 'fas fa-plus-circle';
   $redo.className = 'hidden';
+
 });
 
 $theaterButton.addEventListener('click', function () {
