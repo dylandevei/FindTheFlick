@@ -119,7 +119,7 @@ header {
 
 .watchlist-text,
 .search-text {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -175,7 +175,7 @@ header {
 .result-pick {
   padding: 0.5rem;
   background-color: #404b69;
-  height: 80rem;
+  height: 100%;
   width: 80%;
   border-radius: 1rem;
   margin: 1rem auto;
@@ -489,11 +489,11 @@ i.fa-search {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (min-width: 500px) {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 75rem;
+    height: 100%;
     width: 80%;
     border-radius: 1rem;
     margin: 1rem auto;
@@ -501,14 +501,14 @@ i.fa-search {
   }
 
   .result-plot {
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
 
   .result-starring,
   .result-genres,
   .result-rating,
   .search-text {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
 
   .result-title {
@@ -520,11 +520,11 @@ i.fa-search {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 60rem;
+    height: 100%;
     width: 80%;
     border-radius: 1rem;
     margin: 1rem auto;
@@ -532,7 +532,7 @@ i.fa-search {
   }
 
   .result-plot {
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
 
   .result-poster {
@@ -547,7 +547,7 @@ i.fa-search {
   .result-genres,
   .result-rating,
   .search-text {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
 
   .result-title {
