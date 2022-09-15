@@ -192,18 +192,12 @@ header {
   font-size: 1.75rem;
 }
 
-.result-genres {
-  text-align: center;
-  font-family: "Noto Sans", sans-serif;
-  color: white;
-  font-size: 1.2rem;
-}
-
+.result-genres,
 .result-rating {
   text-align: center;
   font-family: "Noto Sans", sans-serif;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .result-poster {
@@ -217,7 +211,7 @@ header {
 
 .result-starring {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: "Noto Sans", sans-serif;
   color: white;
 }
@@ -226,7 +220,7 @@ header {
   text-align: center;
   font-family: "Noto Sans", sans-serif;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.2;
   position: relative;
 }
