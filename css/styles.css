@@ -175,7 +175,7 @@ header {
 .result-pick {
   padding: 0.5rem;
   background-color: #404b69;
-  height: 75rem;
+  height: 80rem;
   width: 80%;
   border-radius: 1rem;
   margin: 1rem auto;
@@ -202,8 +202,8 @@ header {
 }
 
 .result-poster {
-  height: 40rem;
-  width: 30rem;
+  height: 100%;
+  width: 80%;
   object-fit: contain;
   display: block;
   margin: auto;
@@ -494,7 +494,7 @@ i.fa-search {
     padding: 0.5rem;
     background-color: #404b69;
     height: 75rem;
-    width: 75%;
+    width: 80%;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -502,14 +502,6 @@ i.fa-search {
 
   .result-plot {
     font-size: 0.75rem;
-  }
-
-  .result-poster {
-    height: 40rem;
-    width: 30rem;
-    object-fit: contain;
-    display: block;
-    margin: auto;
   }
 
   .result-starring,
@@ -532,8 +524,8 @@ i.fa-search {
   .result-pick {
     padding: 0.5rem;
     background-color: #404b69;
-    height: 75rem;
-    width: 75%;
+    height: 60rem;
+    width: 80%;
     border-radius: 1rem;
     margin: 1rem auto;
     border: 0.75rem double white;
@@ -544,8 +536,8 @@ i.fa-search {
   }
 
   .result-poster {
-    height: 80%;
-    width: 50%;
+    height: 100%;
+    width: 80%;
     object-fit: contain;
     display: block;
     margin: auto;
