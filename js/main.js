@@ -361,6 +361,7 @@ $theaterButton.addEventListener('click', function () {
   getTheaters();
   switchViews('theaters-page');
   $loading.className = 'lds-spinner';
+  $redo.className = 'hidden';
 });
 
 $homepage.addEventListener('click', function (event) {
